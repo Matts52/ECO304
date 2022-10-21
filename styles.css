@@ -1,7 +1,14 @@
-.title {
-  margin:auto;
-  max-width: 500px;
-  padding: 10px
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+  color: #318024;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-shadow: 0.5px 0.5px;
+}
+
+.disclaimer {
+  text-align: center;
 }
 
 .content {
@@ -10,6 +17,10 @@
     border-radius: 25px;
     border: 2px solid #73AD21;
     padding: 20px;
+  }
+
+  .pad-qs{
+    padding: 5px;
   }
 
 /* CSS */
