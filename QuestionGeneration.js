@@ -129,7 +129,7 @@ function genQ3(){
   }
 
   //calculate expectation and varaince
-  expext = (low + high)/2
+  expect = (low + high)/2
   variance = Math.pow((high - low), 2)/12
 
   //write the output
