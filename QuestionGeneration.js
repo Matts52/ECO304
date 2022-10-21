@@ -112,7 +112,7 @@ function genQ3(){
   symb = getRandomInt(0,1);
 
   //generate the prompt
-  q_text = "Consider a Uniform Random Variable X~U("+low.toString()+", "+high.toString()+"). Please calculate the probability that X "+symbols[symb]+" "+xval.toString()+"?";
+  q_text = "Consider a Uniform Random Variable X~U("+low.toString()+", "+high.toString()+"). Please calculate the probability that X "+symbols[symb]+" "+xval.toString()+"? Also calculate the expectation and variance of X.";
 
   //calculate the answer
   if (symb == 0) {
@@ -128,9 +128,15 @@ function genQ3(){
     ans = 0;
   }
 
+  //calculate expectation and varaince
+  expext = (low + high)/2
+  variance = Math.pow((high - low), 2)/12
+
   //write the output
   document.getElementById("Q3Text").innerHTML = q_text;
   document.getElementById("Q3Ans1").innerHTML = "Probability = "+(Math.round(ans*1000)/1000).toString();
+  document.getElementById("Q3Ans2").innerHTML = "E[X] = "+(Math.round(expect*1000)/1000).toString();
+  document.getElementById("Q3Ans3").innerHTML = "Var(X) = "+(Math.round(variance*1000)/1000).toString();
 
 }
 
