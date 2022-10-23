@@ -103,6 +103,7 @@ function genQ2(){
 
 }
 
+/* generate a uniform distribution example */
 function genQ3(){
   //generate our randomness
   low = getRandomInt(-100, 100);
@@ -140,8 +141,51 @@ function genQ3(){
 
 }
 
+function genQ4(){
+  //generate randomness
+  mean = getRandomInt(-100,100)
+  variance = getRandomInt(1,50)
+  xval = getRandomInt(mean-10,mean+10)
+  symbols = [">", "<"];
+  symb = getRandomInt(0,1);
+
+  //generate question text
+  q_text = "Consider a Normal Random Variable X~U("+mean.toString()+", "+variance.toString()+"). Please calculate the standardized value of "+xval.toString()+". Also calculate the probability that X "+symbols[symb]+" "+xval.toString()+""
+
+  //calculate the standardized value
+  zval = (xval - mean)/Math.sqrt(variance)
+
+  //calculate the answer
+  if (symb == 0) {
+    ans = 1 - normalcdf(zval);
+  } else {
+    ans = normalcdf(zval);
+  }
+
+  //write the output
+  document.getElementById("Q4Text").innerHTML = q_text;
+  document.getElementById("Q4Ans1").innerHTML = "z = "+(Math.round(zval*1000)/1000).toString();
+  document.getElementById("Q4Ans2").innerHTML = "Probability = "+(Math.round(ans*1000)/1000).toString();
+}
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/******** HELPER FUNCTIONS ********/
 
 //view-source:https://www.math.ucla.edu/~tom/distributions/normal.html
 function normalcdf(X){   //HASTINGS.  MAX ERROR = .000001
@@ -151,6 +195,7 @@ function normalcdf(X){   //HASTINGS.  MAX ERROR = .000001
 	if (X>0) {
 		Prob=1-Prob
 	}
+  console.log("Hello")
 	return Prob
 }  
 
