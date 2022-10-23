@@ -1,11 +1,12 @@
   
 /* shell for starting out the questions to be generated */
 function gen_questions(){
-    genQ1();
+  /*  
+  genQ1();
     genQ2();
     genQ3();
     genQ4();
-  
+  */
   }
   
   /* code for generating a single variable question sample */
@@ -145,7 +146,6 @@ function gen_questions(){
     document.getElementById("Q3Ans1").innerHTML = "Probability = "+(Math.round(ans*1000)/1000).toString();
     document.getElementById("Q3Ans2").innerHTML = "E[X] = "+(Math.round(expect*1000)/1000).toString();
     document.getElementById("Q3Ans3").innerHTML = "Var(X) = "+(Math.round(variance*1000)/1000).toString();
-  
   }
   
   /* generate a normal distribution example */
@@ -176,6 +176,50 @@ function gen_questions(){
     document.getElementById("Q4Ans2").innerHTML = "Probability = "+(Math.round(ans*1000)/1000).toString();
   }
   
+
+  /* question about sample mean */
+function genQ5(){
+  let numVals = getRandomInt(2, 5);
+  let vals = [];
+  let n = getRandomInt(5, 50);
+
+  //generate the random values
+  for (let i = 0; i <= numVals - 1; i++) {
+    newval = Math.random() * 1/numVals;
+    vals.push(newval);
+  }
+  vals.push(1 - vals.reduce((partialSum, a) => partialSum + a, 0));
+
+  q_text = "Assume a sample size of "+n.toString()+". What is the expectation and variance of the sample mean?";
+ 
+  let table_text = "<tr> <th> Probability </th> <th> X </th> </tr>";
+  let expected = 0;
+  let xvals = [];
+  for (let i = 0; i < vals.length; i++){
+    newval = Math.round(vals[i] * 100) / 100;
+    xval = getRandomInt(-20, 20);
+    xvals.push(xval);
+    table_text = table_text + "<tr> <th>" + newval.toString() + "</th> <th>"+ xval.toString() +"</th> </tr>";
+    //calculate expected values
+    expected = expected + newval * xval;
+  }
+
+  //calculate the variance and a cumulative value
+  let variance = 0;
+  for (let i = 0; i < vals.length; i++){
+    newval = Math.round(vals[i] * 100) / 100;
+    variance = variance + Math.pow( (xvals[i] - expected),2) * newval;
+  }
+  variance = variance/n
+
+  //write the answers to the output table
+  document.getElementById("Q5Text").innerHTML = q_text;
+  document.getElementById("Q5Table").innerHTML = table_text;
+  document.getElementById("Q5Ans1").innerHTML = "Expectation = "+(Math.round(expected*1000)/1000).toString();
+  document.getElementById("Q5Ans2").innerHTML = "Variance = "+(Math.round(variance*1000)/1000).toString();
+
+}
+
 
   
 
