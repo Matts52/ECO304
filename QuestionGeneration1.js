@@ -1,12 +1,12 @@
   
 /* shell for starting out the questions to be generated */
 function gen_questions(){
-  /*  
+  
   genQ1();
     genQ2();
     genQ3();
     genQ4();
-  */
+  
   }
   
   /* code for generating a single variable question sample */
@@ -158,7 +158,7 @@ function gen_questions(){
     symb = getRandomInt(0,1);
   
     //generate question text
-    q_text = "Consider a Normal Random Variable X~U("+mean.toString()+", "+variance.toString()+"). Please calculate the standardized value of "+xval.toString()+". Also calculate the probability that X "+symbols[symb]+" "+xval.toString()+".";
+    q_text = "Consider a Normal Random Variable X~N("+mean.toString()+", "+variance.toString()+"). Please calculate the standardized value of "+xval.toString()+". Also calculate the probability that X "+symbols[symb]+" "+xval.toString()+".";
   
     //calculate the standardized value
     zval = (xval - mean)/Math.sqrt(variance);
