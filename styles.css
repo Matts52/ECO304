@@ -22,7 +22,7 @@ h1 {
     max-width: 500px;
     margin: auto;
     border-radius: 25px;
-    border: 2px solid #73AD21;
+    border: 2px solid rgba(198, 255, 203);
     padding: 20px;
     text-align: center;
     margin-left: auto;
@@ -33,7 +33,7 @@ h1 {
     max-width: 750px;
     margin: auto;
     border-radius: 25px;
-    border: 2px solid #73AD21;
+    border: 2px solid rgba(198, 255, 203);
     padding: 20px;
     text-align: center;
     margin-left: auto;
