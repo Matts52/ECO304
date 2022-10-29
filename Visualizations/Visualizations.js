@@ -4,6 +4,7 @@ window.onload = function () {
 
 /* Global variables affecting the visualization, bad practice but oh well */
 var bins = 10;
+
 var jsonData=  {
   "data" :  [
   {"bin": "1.0", "frequency": 0}, 
@@ -19,8 +20,12 @@ var jsonData=  {
   {"bin": "3.0", "frequency": 0}]
 };
 
+var jData = [];
 
+
+/* Event Listeners */
 document.getElementById("genCLT").addEventListener("click", genCLT);
+document.getElementById("genLLN").addEventListener("click", genLLN);
 
 
 
@@ -44,6 +49,11 @@ function genSetup(){
   //write the answers to the output table
   document.getElementById("CLTText").innerHTML = q_text;
   document.getElementById("CLTTable").innerHTML = table_text;
+
+  q_text_lln = "Assume a sample size of "+n.toString()+" for every individual sample. Observe how the sample means converges in expectation to the theoretical mean as you record more and more sample means for the following underlying random variable: ";
+
+  document.getElementById("LLNText").innerHTML = q_text_lln;
+  document.getElementById("LLNTable").innerHTML = table_text;
 
 }
 
@@ -69,7 +79,7 @@ function genSampMean(){
 function genCLT(){
 
   //read in the desired number of samples
-  let numSamps = Number(document.getElementById("numSamples").value)
+  let numSamps = Number(document.getElementById("numSamples").value);
 
   for (let i = 0; i < numSamps; i ++){genSampMean()}
 
@@ -77,7 +87,7 @@ function genCLT(){
 
   /* prep the svg canvas and axis scalings */
   var margin = {top: 30, right: 30, bottom: 30, left: 30},
-  width = 600 - margin.left - margin.right,
+  width = 350 - margin.left - margin.right,
   height = 350 - margin.top - margin.bottom;
 
   var x = d3.scaleLinear()
@@ -90,7 +100,7 @@ function genCLT(){
 
 
   /* remove previous run and create a new svg */
-  d3.select("svg").remove();
+  d3.select("#clt_dataviz").select("svg").remove();
 
   var svg = d3.select("#clt_dataviz").append("svg")
   .attr("width", width + margin.left + margin.right)
@@ -133,6 +143,128 @@ function genCLT(){
     .text("Sample Mean");
 
   }
+
+
+
+function genLLNData(maxSamp){
+  let sampSize = 5;
+  let expMean = 0;
+  let TheoMean = 2;
+
+  jData = [];
+
+  //generate samples means
+  for (let i = 0; i < maxSamp; i++){
+    currSamp = 0;
+    //generate samples within a sample mean
+    for (let j = 0; j < sampSize; j++){
+      currSamp += getRandomInt(1, 3);
+    }
+    currMean = currSamp/sampSize;
+    expMean = (i/(i+1)) * expMean + (1/(i+1)) * currMean;
+
+    jData.push({"x": i+1, "y": expMean, "z": TheoMean});
+  }
+
+}
+
+
+function genLLN(){
+
+  //read in the desired number of samples
+  let numSamps = Number(document.getElementById("numLLNSamps").value);
+
+  //generate the data for the visualization
+  genLLNData(numSamps);
+
+  /* prep the svg canvas and axis scalings */
+  var margin = {top: 30, right: 30, bottom: 30, left: 30},
+  width = 350 - margin.left - margin.right,
+  height = 350 - margin.top - margin.bottom;
+
+const xScale = d3.scaleLinear()
+  .domain([1, numSamps])
+  .range([0, width]) // 600 is our chart width
+ 
+const yScale = d3.scaleLinear()
+  .domain([1, 3])
+  .range([height, 0]) // 400 is our chart height
+
+const lineSamp = d3.line()
+  .x(d => xScale(d.x))
+  .y(d => yScale(d.y))
+  .curve(d3.curveCatmullRom.alpha(.5))
+
+const lineTheo = d3.line()
+  .x(d => xScale(d.x))
+  .y(d => yScale(d.z))
+  .curve(d3.curveCatmullRom.alpha(.5))
+
+  /* remove previous run and create a new svg */
+  d3.select("#lln_dataviz").select("svg").remove();
+
+  var svg = d3.select("#lln_dataviz").append("svg")
+  .attr("width", width + margin.left + margin.right)
+  .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+svg.append('path') // add a path to the existing svg
+  .datum(jData)
+  .attr('d', lineSamp)
+  .attr("fill", "none")
+  .attr("stroke", "rgb(0,0,0)")
+
+  svg.append('path') // add a path to the existing svg
+  .datum(jData)
+  .attr('d', lineTheo)
+  .attr("fill", "none")
+  .attr("stroke", "rgb(126, 232, 107)")
+
+
+  
+// call the x axis
+svg.append("g")
+              .attr("class", "axis axis--x")
+              .attr("transform", "translate(0," + height + ")")
+              .call(d3.axisBottom(xScale));
+
+//call the y axis
+svg.append("g")
+              .call(d3.axisLeft(yScale))
+
+
+svg.append("text")
+              .attr("class", "x label")
+              .attr("text-anchor", "middle")
+              .attr("x", width/2)
+              .attr("y", height * 1.09)
+              .text("Number of Sample Means Considered");
+              
+//add the legend
+svg.append("g")
+              .attr("class", "legend")
+              .attr("transform","translate(50,30)")
+              .style("font-size","12px")
+              .call(d3.legend)
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
