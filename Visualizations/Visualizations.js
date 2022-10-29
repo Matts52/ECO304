@@ -242,12 +242,6 @@ svg.append("text")
               .attr("y", height * 1.09)
               .text("Number of Sample Means Considered");
               
-//add the legend
-svg.append("g")
-              .attr("class", "legend")
-              .attr("transform","translate(50,30)")
-              .style("font-size","12px")
-              .call(d3.legend)
 
 
 
