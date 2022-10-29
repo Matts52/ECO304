@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C0CWMV96MD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-C0CWMV96MD');
+  </script>
+
+  <link rel="stylesheet" href="../styles.css">
+
+    <!-- libraries -->
+    <script src="https://d3js.org/d3.v4.js"></script>
+
+</head>
+<body>
+
+      <!-- Simple Navbar -->
+  <div class="topnav">
+    <a href="..">Questions</a>
+    <a class="active" href=".">Visualizations</a>
+    <a href="../GradeCalc">Grade Calculator</a>
+  </div>
+
+  <!-- Vizualizations -->
+  <h1 class="title">ECO304 Visualizations</h1>
+
+
+  <div class="pad-qs"></div>
+  <div class="content-wide">
+    <!-- Central Limit Theorem -->
+    <h2>Central Limit Theorem</h2>
+    <p id="CLTText"></p>
+    <table class="question" id="CLTTable"></table>
+    <p>How many sample means would you like to generate: <input type="number" id="numSamples"></p>
+    <div class="pad-qs"></div>
+    <input class="button-68" type="button" id="genCLT" value="Generate Samples">
+    <div id="clt_dataviz"></div>
+  </div>
+
+
+  <p class="disclaimer">Note: Small bugs may be present. Bug fixes are encouraged in the <a href = "https://github.com/Matts52/ECO304_Calculators">Github repository!</a></p>
+
+    <!-- scripts -->
+  <script type="text/javascript" src="Visualizations.js"></script>
+
+
+
+</body>

@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C0CWMV96MD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-C0CWMV96MD');
+  </script>
+
+  <link rel="stylesheet" href="../styles.css">
+
+</head>
+<body>
+
+      <!-- Simple Navbar -->
+  <div class="topnav">
+    <a href="..">Questions</a>
+    <a href="../Visualizations">Visualizations</a>
+    <a class="active" href=".">Grade Calculator</a>
+  </div>
+
+
+      <!-- Grade Calculator -->
+  <h1 class="title">ECO304 Grade Calculator</h1>
+  <div class="content">
+    <table class="gradetable">
+      <thead>
+      <th>
+        <td>Material</td><td>Percent Score</td>
+      </th>
+      </thead>
+      <tbody>
+      <tr>
+        <td></td><td>A1: </td><td><input type="number" id="A1Grade"></td>
+      </tr>
+      <tr>
+        <td></td><td>A2: </td><td><input type="number" id="A2Grade"></td>
+      </tr>
+      <tr>
+        <td></td><td>A3: </td><td><input type="number" id="A3Grade"></td>
+      </tr>
+      <tr>
+        <td></td><td>A4: </td><td><input type="number" id="A4Grade"></td>
+      </tr>
+      <tr>
+        <td></td><td>A5: </td><td><input type="number" id="A5Grade"></td>
+      </tr>
+      <tr>
+        <td></td><td>A6: </td><td><input type="number" id="A6Grade"></td>
+      </tr>
+      <tr>
+        <td></td><td>L1: </td><td><input type="number" id="L1Grade"></td>
+      </tr>
+      <tr>
+        <td></td><td>L2: </td><td><input type="number" id="L2Grade"></td>
+      </tr>
+      <tr>
+        <td></td><td>L3: </td><td><input type="number" id="L3Grade"></td>
+      </tr>
+      <tr>
+        <td></td><td>Final: </td><td><input type="number" id="FGrade"></td>
+      </tr>
+      </tbody>
+    </table>
+
+    <div class="pad-qs"></div>
+
+    <input class="button-68" type="button" id="calcGrade" value="Generate Grade">
+    <p id="gradecalc_curr"></p>
+  </div>
+
+  <p class="disclaimer">Calculations are subject to round-off error and other computational imprecisions and are used for gauging purposes only</p>
+
+  <!-- scripts -->
+  <script type="text/javascript" src="GradeCalculate.js"></script>
+
+
+</body>
