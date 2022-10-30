@@ -8,7 +8,8 @@ window.onload = function () {
   document.getElementById("genQ4").addEventListener("click", genQ4); 
   document.getElementById("genQ5").addEventListener("click", genQ5);
   document.getElementById("genQ6").addEventListener("click", genQ6); 
-  document.getElementById("genQ7").addEventListener("click", genQ7); 
+  document.getElementById("genQ7").addEventListener("click", genQ7);
+  document.getElementById("genQ8").addEventListener("click", genQ8); 
 
 
 
@@ -247,7 +248,7 @@ function genQ6(){
     ans_lower = mean - zval * Math.sqrt(variance/n);
     ans_upper = mean + zval * Math.sqrt(variance/n);
 
-    q_ans = "E[X] &#8712; ("+(Math.round(ans_lower*1000)/1000).toString()+", "+(Math.round(ans_upper*1000)/1000).toString()+")"
+    q_ans = "E[X] &#8712; ("+(Math.round(ans_lower*1000)/1000).toString()+", "+(Math.round(ans_upper*1000)/1000).toString()+")";
   //otherwise if the true mean is not known
   } else {
 
@@ -255,13 +256,13 @@ function genQ6(){
       percent confidence level is desired. Please calculate this confidence interval for E[X].";
 
     //calulcate the critical value from the t-table
-    alpha = (100 - confLevel)/200
-    tcritval = tdistr(n-1, alpha)
+    alpha = (100 - confLevel)/200;
+    tcritval = tdistr(n-1, alpha);
 
     ans_lower = mean - tcritval * Math.sqrt(variance/n);
     ans_upper = mean + tcritval * Math.sqrt(variance/n);
 
-    q_ans = "E[X] &#8712; ("+(Math.round(ans_lower*1000)/1000).toString()+", "+(Math.round(ans_upper*1000)/1000).toString()+")"
+    q_ans = "E[X] &#8712; ("+(Math.round(ans_lower*1000)/1000).toString()+", "+(Math.round(ans_upper*1000)/1000).toString()+")";
   }
 
   document.getElementById("Q6Text").innerHTML = q_text;
@@ -282,20 +283,54 @@ function genQ7(){
 
   //calculcate the critical value from the chi-table
   alpha = (100 - confLevel)/200
-  chihighcritval = chisqrdistr(n-1, alpha)
-  chilowcritval = chisqrdistr(n-1, 1-alpha)
+  chihighcritval = chisqrdistr(n-1, alpha);
+  chilowcritval = chisqrdistr(n-1, 1-alpha);
 
   //get the two boundaries
-  ans_lower = ((n-1)*variance)/chihighcritval
-  ans_upper = ((n-1)*variance)/chilowcritval
+  ans_lower = ((n-1)*variance)/chihighcritval;
+  ans_upper = ((n-1)*variance)/chilowcritval;
 
-  q_ans = "Var[X] &#8712; ("+(Math.round(ans_lower*1000)/1000).toString()+", "+(Math.round(ans_upper*1000)/1000).toString()+")"
+  q_ans = "Var[X] &#8712; ("+(Math.round(ans_lower*1000)/1000).toString()+", "+(Math.round(ans_upper*1000)/1000).toString()+")";
 
   //write to document
   document.getElementById("Q7Text").innerHTML = q_text;
   document.getElementById("Q7Ans1").innerHTML = q_ans;
 
 }
+
+function genQ8() {
+    //initialize our variables
+    sampMean = Math.random() * 50;
+    testMean = sampMean + Math.random() * 5 * [-1, 1][getRandomInt(0,1)]
+    sampVar = Math.random() * 100;
+    conf = getRandomInt(0,2);
+    confLevel = [90, 95, 99][conf];
+    n = getRandomInt(5, 100);
+
+    q_text = "Assume random sampling. Given a sample mean of "+sampMean.toFixed(2).toString()+", sample variance of "+sampVar.toFixed(2).toString()+", confidence level \
+          of "+confLevel.toString()+", and sample size of "+n.toString()+". Test the hypothesis that the underlying mean is "+testMean.toFixed(2).toString()+"."
+
+    //calculate our test statistic
+    teststat = (sampMean - testMean)/Math.sqrt(sampVar/n);
+
+    //calulcate the critical value from the t-table
+    alpha = (100 - confLevel)/200;
+    tcritval = tdistr(n-1, alpha);
+
+    //do the decision rule
+    if (Math.abs(teststat) > Math.abs(tcritval)){
+      q_ans = "Reject the Null Hypothesis"
+    } else {
+      q_ans = "Fail to reject the Null Hypothesis"
+    }
+
+    //write to document
+    document.getElementById("Q8Text").innerHTML = q_text;
+    document.getElementById("Q8Ans1").innerHTML = q_ans;
+
+}
+
+
 
 
 
