@@ -16,6 +16,10 @@
   <!-- tell broswer not to cache the webpage (hopefully it listens) -->
   <meta http-equiv="cache-control" content="no-cache">
 
+
+  <!-- libraries -->
+  <script type="text/javascript" src="StatisticalHelpers.js"></script>
+
 </head>
   <body>
 
@@ -93,6 +97,26 @@
     <p id="Q5Ans2"></p>
   </div>
 
+  <div class="pad-qs"></div>
+
+  <div class="content">
+    <!-- Confidence Interval of the Mean -->
+    <h2>Confidence Interval of the Mean</h2>
+    <input class="button-68" type="button" id="genQ6" value="Generate Question">
+    <p id="Q6Text"></p>
+    <p id="Q6Ans1"></p>
+  </div>
+
+  <div class="pad-qs"></div>
+
+  <div class="content">
+    <!-- Confidence Interval of the Variance -->
+    <h2>Confidence Interval of the Variance</h2>
+    <input class="button-68" type="button" id="genQ7" value="Generate Question">
+    <p id="Q7Text"></p>
+    <p id="Q7Ans1"></p>
+  </div>
+
 
 
 
@@ -101,6 +125,7 @@
   <p class="disclaimer">Note: Small bugs may be present in some of the questions as I have not had time to exhaustively verify the questions. Bug fixes are encouraged in the <a href = "https://github.com/Matts52/ECO304_Calculators">Github repository!</a></p>
   <!-- my scripts -->
   <script type="text/javascript" src="GenerateQuestions.js"></script>
+  
 
 
 </body>

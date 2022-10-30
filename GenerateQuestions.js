@@ -6,7 +6,9 @@ window.onload = function () {
   document.getElementById("genQ2").addEventListener("click", genQ2); 
   document.getElementById("genQ3").addEventListener("click", genQ3); 
   document.getElementById("genQ4").addEventListener("click", genQ4); 
-  document.getElementById("genQ5").addEventListener("click", genQ5); 
+  document.getElementById("genQ5").addEventListener("click", genQ5);
+  document.getElementById("genQ6").addEventListener("click", genQ6); 
+  document.getElementById("genQ7").addEventListener("click", genQ7); 
 
 
 
@@ -223,31 +225,77 @@ function genQ5(){
 }
 
 
+function genQ6(){
+  let trueKnown = [false, true][getRandomInt(0,1)];
   
+  //initialize our variables
+  mean = getRandomInt(-50, 50);
+  variance = getRandomInt(1, 100);
+  conf = getRandomInt(0,2);
+  confLevel = [90, 95, 99][conf];
+  zval = [1.645, 1.96, 2.58][conf];
+  n = getRandomInt(5, 100);
 
-  
-/******** HELPER FUNCTIONS ********/
+  q_text = "Assume that data is randomly sampled.";
 
-//view-source:https://www.math.ucla.edu/~tom/distributions/normal.html
-function normalcdf(X){   //HASTINGS.  MAX ERROR = .000001
-	var T=1/(1+.2316419*Math.abs(X));
-	var D=.3989423*Math.exp(-X*X/2);
-	var Prob=D*T*(.3193815+T*(-.3565638+T*(1.781478+T*(-1.821256+T*1.330274))));
-	if (X>0) {
-		Prob=1-Prob
-	}
-	return Prob
-}  
+  //check for if true mean known
+  if (trueKnown){
 
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+    q_text += " The underlying mean is "+mean.toString()+", underlying variance is "+variance.toString()+", sample size is "+n.toString()+", and a "+confLevel.toString()+" \
+      percent confidence level is desired. Please calculate this confidence interval for E[X].";
+
+    ans_lower = mean - zval * Math.sqrt(variance/n);
+    ans_upper = mean + zval * Math.sqrt(variance/n);
+
+    q_ans = "E[X] &#8712; ("+(Math.round(ans_lower*1000)/1000).toString()+", "+(Math.round(ans_upper*1000)/1000).toString()+")"
+  //otherwise if the true mean is not known
+  } else {
+
+    q_text += " The sample mean is "+mean.toString()+", sample variance is "+variance.toString()+", sample size is "+n.toString()+", and a "+confLevel.toString()+" \
+      percent confidence level is desired. Please calculate this confidence interval for E[X].";
+
+    //calulcate the critical value from the t-table
+    alpha = (100 - confLevel)/200
+    tcritval = tdistr(n-1, alpha)
+
+    ans_lower = mean - tcritval * Math.sqrt(variance/n);
+    ans_upper = mean + tcritval * Math.sqrt(variance/n);
+
+    q_ans = "E[X] &#8712; ("+(Math.round(ans_lower*1000)/1000).toString()+", "+(Math.round(ans_upper*1000)/1000).toString()+")"
+  }
+
+  document.getElementById("Q6Text").innerHTML = q_text;
+  document.getElementById("Q6Ans1").innerHTML = q_ans;
+
 }
 
 
+function genQ7(){
+  //initialize our variables
+  variance = getRandomInt(1, 100);
+  conf = getRandomInt(0,2);
+  confLevel = [90, 95, 99][conf];
+  n = getRandomInt(5, 100);
 
+  q_text = "Assume that data is randomly sampled. The sample variance is "+variance.toString()+", sample size is "+n.toString()+", and a "+confLevel.toString()+" \
+  percent confidence level is desired. Please calculate this confidence interval for Var[X].";
 
+  //calculcate the critical value from the chi-table
+  alpha = (100 - confLevel)/200
+  chihighcritval = chisqrdistr(n-1, alpha)
+  chilowcritval = chisqrdistr(n-1, 1-alpha)
+
+  //get the two boundaries
+  ans_lower = ((n-1)*variance)/chihighcritval
+  ans_upper = ((n-1)*variance)/chilowcritval
+
+  q_ans = "Var[X] &#8712; ("+(Math.round(ans_lower*1000)/1000).toString()+", "+(Math.round(ans_upper*1000)/1000).toString()+")"
+
+  //write to document
+  document.getElementById("Q7Text").innerHTML = q_text;
+  document.getElementById("Q7Ans1").innerHTML = q_ans;
+
+}
 
 
 

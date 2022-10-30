@@ -5,7 +5,7 @@
 window.onload = function () {
 
 
-/* Global variables affecting the visualizations, bad practice but oh well :(  ) */
+/* Global variables affecting the visualizations, bad practice but oh well :(   */
 var bins = 10;
 
 var CLTfreq =  {
@@ -321,18 +321,14 @@ function genDFTdata(min, max){
   lastval = min - 0.1;
   for (let i = min; i < max; i += 0.1){
     //create new calculated values uniformly
-    //newval = min + i/(max-min);
     newval = i
-    //console.log(compute_tdist(newval, lowdf));
     lowdfprob = compute_tdist(newval, lowdf) - compute_tdist(lastval, lowdf);
     highdfprob = compute_tdist(newval, highdf) - compute_tdist(lastval, highdf);
+    normprob = normalcdf(newval) - normalcdf(lastval);
 
-    data.push({"x": newval, "y": lowdfprob * 10, "z": highdfprob * 10});
+    data.push({"x": newval, "y": lowdfprob * 10, "z": highdfprob * 10, "normal": normprob * 10});
     lastval = newval;
   }
-
-
-
 
   return data;
 
@@ -369,6 +365,10 @@ const line2 = d3.line()
   .x(d => xScale(d.x))
   .y(d => yScale(d.z));
 
+const linenorm = d3.line()
+  .x(d => xScale(d.x))
+  .y(d => yScale(d.normal));
+
 
   /* remove previous run and create a new svg */
   d3.select("#dft_dataviz").select("svg").remove();
@@ -388,9 +388,17 @@ const line2 = d3.line()
     .datum(DFTdata)
     .attr('d', line)
     .attr("fill", "none")
-    .attr("stroke", "rgb(0,0,0)")
+    .attr("stroke", "rgb(0, 0, 0)")
     .attr("id", "Begin");
   
+  //plot the normal density function for reference
+  svg.append('path')
+    .datum(DFTdata)
+    .attr('d', linenorm)
+    .attr("fill", "none")
+    .attr("stroke", "rgb(126, 232, 107)")
+    .attr("id", "Normal");
+
     // call the x axis
     svg.append("g")
               .attr("class", "axis axis--x")
@@ -434,118 +442,7 @@ const line2 = d3.line()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/************************** HELPER FUNCTIONS *******************************/
-
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-
-/* t-distribution functions from view-source:https://www.math.ucla.edu/~tom/distributions/tDist.html */
-function LogGamma(Z) {
-	with (Math) {
-		var S=1+76.18009173/Z-86.50532033/(Z+1)+24.01409822/(Z+2)-1.231739516/(Z+3)+.00120858003/(Z+4)-.00000536382/(Z+5);
-		var LG= (Z-.5)*log(Z+4.5)-(Z+4.5)+log(S*2.50662827465);
-	}
-	return LG
-}
-
-function Betinc(X,A,B) {
-	var A0=0;
-	var B0=1;
-	var A1=1;
-	var B1=1;
-	var M9=0;
-	var A2=0;
-	var C9;
-	while (Math.abs((A1-A2)/A1)>.00001) {
-		A2=A1;
-		C9=-(A+M9)*(A+B+M9)*X/(A+2*M9)/(A+2*M9+1);
-		A0=A1+C9*A0;
-		B0=B1+C9*B0;
-		M9=M9+1;
-		C9=M9*(B-M9)*X/(A+2*M9-1)/(A+2*M9);
-		A1=A0+C9*A1;
-		B1=B0+C9*B1;
-		A0=A0/B1;
-		B0=B0/B1;
-		A1=A1/B1;
-		B1=1;
-	}
-	return A1/A
-}
-
-function compute_tdist(X, df) {
-    with (Math) {
-		if (df<=0) {
-			alert("Degrees of freedom must be positive")
-		} else {
-			A=df/2;
-			S=A+.5;
-			Z=df/(df+X*X);
-			BT=exp(LogGamma(S)-LogGamma(.5)-LogGamma(A)+A*log(Z)+.5*log(1-Z));
-			if (Z<(A+1)/(S+2)) {
-				betacdf=BT*Betinc(Z,A,.5)
-			} else {
-				betacdf=1-BT*Betinc(1-Z,.5,A)
-			}
-			if (X<0) {
-				tcdf=betacdf/2
-			} else {
-				tcdf=1-betacdf/2
-			}
-		}
-		tcdf=round(tcdf*100000)/100000;
-	}
-    return tcdf;
-}
-
 
 
 
