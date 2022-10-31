@@ -29,6 +29,7 @@ document.getElementById("genCLT").addEventListener("click", genCLT);
 document.getElementById("genLLN").addEventListener("click", genLLN);
 document.getElementById("resetCLT").addEventListener("click", resetCLT);
 document.getElementById("genDFT").addEventListener("click", genDFT);
+document.getElementById("genREG").addEventListener("click", genREG);
 
 
 
@@ -63,7 +64,9 @@ function genSetup(){
   able to take advantage of this property?"
   document.getElementById("DFTText").innerHTML = q_text_dft
 
-
+  //generate the Regression information
+  q_text_reg = "Consider how a regression line is fit. Based on the points that are plotted, how do we go about developing the \"line of best fit\"?"
+  document.getElementById("RegText").innerHTML = q_text_reg
 
 }
 
@@ -338,8 +341,8 @@ function genDFTdata(min, max){
 
 
 function genDFT(){
-  min = -10;
-  max = 10;
+  min = -4;
+  max = 4;
 
 
   DFTdata = genDFTdata(min, max);
@@ -438,6 +441,149 @@ const linenorm = d3.line()
 
 
 }
+
+
+function genRegPoints(min, max, numPoints){
+  data = [];
+  slope = Math.random() * [-1.5, 1.5][getRandomInt(0,1)]
+  intercept = getRandomInt(min, max);
+
+  for (let i = 0; i < numPoints; i++){
+    x = min - 1
+    y = min - 1
+    //make sure we get a point that is in the frame of the plot
+    while (x < min || y < min || x > max || y > max){
+      x = getRandomInt(min, max) + Math.random();
+      y = (intercept + (slope * x)) + Math.random() * [-15, 15][getRandomInt(0,1)];
+    }
+    //error = (intercept + (slope * x)) - y;
+
+    data.push({"x": x, "y": y});
+  }
+
+  return data;
+
+}
+
+
+function genRegParams(data, numPoints){
+  //calculate x and y means
+  xmean = 0, ymean = 0;
+  for (let i = 0; i < numPoints; i++){
+    xmean += data[i].x/numPoints;
+    ymean += data[i].y/numPoints;
+  }
+
+  //calculate the b1 and b0 estimate
+  b1_num = 0;
+  b1_denom = 0;
+  for (let i = 0; i < numPoints; i++){
+    b1_num += (data[i].x - xmean) * (data[i].y - ymean);
+    b1_denom += Math.pow((data[i].x - xmean), 2);
+  }
+  b1 = b1_num/b1_denom;
+  b0 = ymean - b1 * xmean;
+  return [b0, b1];
+}
+
+
+
+
+function genREG() {
+  min = 0;
+  max = 100;
+  numPoints = 10;
+
+  REGpoints = genRegPoints(min, max, numPoints);
+  REGparams = genRegParams(REGpoints, numPoints);
+
+  //build out the supported domain for the ols lines
+  OLSpoints = [];
+  for (let i = 0; i < max; i++){
+    if ((REGparams[0] + REGparams[1] * i > min) && (REGparams[0] + REGparams[1] * i < max)){
+      OLSpoints.push({"x": i});
+    }
+  }
+
+  /* prep the svg canvas and axis scalings */
+  var margin = {top: 30, right: 30, bottom: 30, left: 30},
+  width = 350 - margin.left - margin.right,
+  height = 350 - margin.top - margin.bottom;
+
+  /* create the SVG */
+  d3.select("#reg_dataviz").select("svg").remove();
+  var svg = d3.select("#reg_dataviz").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+  /* create scales for our points */
+  const xScale = d3.scaleLinear()
+    .domain([min, max])
+    .range([0, width])
+ 
+  const yScale = d3.scaleLinear()
+    .domain([min, max])
+    .range([height, 0])
+
+  const linereg = d3.line()
+    .x(d => xScale(d.x))
+    .y(d => yScale(REGparams[0] + REGparams[1]*d.x));
+
+  /* call the axes */
+  svg.append("g")
+    .attr("class", "axis axis--x")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(xScale));
+
+  svg.append("g")
+    .call(d3.axisLeft(yScale));
+
+  /* call the scatterplot */
+  svg.append('g')
+    .selectAll("dot")
+    .data(REGpoints)
+    .enter()
+    .append("circle")
+    .attr("cx", function (d) { return xScale(d.x); } )
+    .attr("cy", function (d) { return yScale(d.y); } )
+    .attr("r", 3)
+    .style("fill", "rgb(126, 232, 107)");
+
+  /* call the regression line */
+  svg.append('path')
+    .datum(OLSpoints)
+    .attr('d', linereg)
+    .attr("fill", "none")
+    .attr("stroke", "rgb(0, 0, 0)")
+    .attr("id", "OLS");
+
+
+  /* Animate the theoretical mean updates */
+  const updatedPath = d3.select("#reg_dataviz").select("svg")
+    .select("path#OLS")
+    .interrupt()
+    .datum(OLSpoints)
+    .attr("d", linereg);
+  const pathLength = updatedPath.node().getTotalLength();
+  const transitionPath = d3
+    .transition()
+    .ease(d3.easeSin)
+    .duration(2500);
+  updatedPath
+    .attr("stroke-dashoffset", pathLength)
+    .attr("stroke-dasharray", pathLength)
+    .transition(transitionPath)
+    .attr("stroke-dashoffset", 0);
+
+  //write our regression parameters to the document
+  document.getElementById("RegFreeText").innerHTML = "b0: "+REGparams[0].toFixed(2).toString()+", b1: "+REGparams[1].toFixed(2).toString();
+
+}
+
+
 
 
 
