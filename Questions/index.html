@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C0CWMV96MD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-C0CWMV96MD');
+  </script>
+
+  <link rel="stylesheet" href="../styles.css">
+
+  <!-- tell broswer not to cache the webpage (hopefully it listens) -->
+  <meta http-equiv="cache-control" content="no-cache">
+
+
+  <!-- libraries -->
+  <script type="text/javascript" src="../Scripts/StatisticalHelpers.js"></script>
+
+</head>
+  <body>
+
+  <!-- Simple Navbar -->
+  <div class="topnav">
+    <a href="..">Home</a>
+    <a class="active" href=".">Questions</a>
+    <a href="../Visualizations">Visualizations</a>
+    <a href="../GradeCalc">Grade Calculator</a>
+  </div>
+
+
+
+  <!-- Title of Page -->
+  <h1 class="title">ECO304 Practice Generator</h1>
+
+  <hr class="style-eight home">
+
+  <div class="content">
+    <!-- Single Variable-->
+    <h2>Single Variable PDF</h2>
+    <input class="button-68" type="button" id="genQ1" value="Generate Question">
+    <table class="question" id="Q1Text"></table>
+    <p id="Q1Ans1"></p>
+    <p id="Q1Ans2"></p>
+    <p id="Q1Ans3"></p>
+    <p id="Q1Ans4"></p>
+  </div>
+
+  <div class="pad-qs"></div>
+
+  <div class="content">
+    <!-- Two Variable -->
+    <h2>Two Variable PDF</h2>
+    <input class="button-68" type="button" id="genQ2" value="Generate Question">
+    <table class="question" id="Q2Text"></table>
+    <p id="Q2Ans1"></p>
+    <p id="Q2Ans2"></p>
+    <p id="Q2Ans3"></p>
+    <p id="Q2Ans4"></p>
+    <p id="Q2Ans5"></p>
+  </div>
+
+  <div class="pad-qs"></div>
+
+  <div class="content">
+    <!-- Uniform Distribution -->
+    <h2>Uniform Distribution</h2>
+    <input class="button-68" type="button" id="genQ3" value="Generate Question">
+    <p id="Q3Text"></p>
+    <p id="Q3Ans1"></p>
+    <p id="Q3Ans2"></p>
+    <p id="Q3Ans3"></p>
+  </div>
+
+  <div class="pad-qs"></div>
+
+  <div class="content">
+    <!-- Normal Distribution -->
+    <h2>Normal Distribution</h2>
+    <input class="button-68" type="button" id="genQ4" value="Generate Question">
+    <p id="Q4Text"></p>
+    <p id="Q4Ans1"></p>
+    <p id="Q4Ans2"></p>
+  </div>
+
+  <div class="pad-qs"></div>
+
+  <div class="content">
+    <!-- Sample Mean -->
+    <h2>Sampling Mean</h2>
+    <input class="button-68" type="button" id="genQ5" value="Generate Question">
+    <p id="Q5Text"></p>
+    <table class="question" id="Q5Table"></table>
+    <p id="Q5Ans1"></p>
+    <p id="Q5Ans2"></p>
+  </div>
+
+  <div class="pad-qs"></div>
+
+  <div class="content">
+    <!-- Confidence Interval of the Mean -->
+    <h2>Confidence Interval of the Mean</h2>
+    <input class="button-68" type="button" id="genQ6" value="Generate Question">
+    <p id="Q6Text"></p>
+    <p id="Q6Ans1"></p>
+  </div>
+
+  <div class="pad-qs"></div>
+
+  <div class="content">
+    <!-- Confidence Interval of the Variance -->
+    <h2>Confidence Interval of the Variance</h2>
+    <input class="button-68" type="button" id="genQ7" value="Generate Question">
+    <p id="Q7Text"></p>
+    <p id="Q7Ans1"></p>
+  </div>
+
+  <div class="pad-qs"></div>
+
+  <div class="content">
+    <!-- Hypothesis Test of the Mean -->
+    <h2>Hypothesis Test of the Mean</h2>
+    <input class="button-68" type="button" id="genQ8" value="Generate Question">
+    <p id="Q8Text"></p>
+    <p id="Q8Ans1"></p>
+  </div>
+
+
+
+
+
+  <p class="disclaimer">Note: Small bugs may be present in some of the questions as I have not had time to exhaustively verify the questions. Bug fixes are encouraged in the <a href = "https://github.com/Matts52/ECO304_Calculators">Github repository!</a></p>
+  
+  
+  <!-- my scripts -->
+  <script type="text/javascript" src="GenerateQuestions.js"></script>
+  
+
+
+</body>
+</html>
