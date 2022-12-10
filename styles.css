@@ -3,6 +3,24 @@ body {
   font:normal 75% Arial, Helvetica, sans-serif;
 }
 
+.glossary {
+  text-align: center;
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.glosspara > p {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.glosspara > h3 {
+  margin-left: 5%;
+  margin-right: 5%;
+  font-size: large;
+}
+
+
 /* landig page gradient animation */
 body.landing {
   margin: 0;
@@ -200,5 +218,7 @@ hr.home:after { content: "Practice Generator"; }
 hr.visualize:after { content: "Visualizations";}
 
 hr.grades:after { content: "Grade Calculator";}
+
+
 
 
