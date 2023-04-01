@@ -1,4 +1,3 @@
-
 /******** HELPER FUNCTIONS ********/
 
 //view-source:https://www.math.ucla.edu/~tom/distributions/normal.html

@@ -61,6 +61,18 @@ h1 {
   opacity: 0%;
 }
 
+h2 {
+  font-family: "Roboto", sans-serif; /* Choose a font that matches your site's style */
+  font-size: 20px;
+  font-weight: bold;
+  color: #333; /* Choose a color that matches your site's color scheme */
+  text-align: center;
+  text-transform: uppercase; /* Make the text all caps */
+  margin-top: 40px; /* Add some space above the heading */
+  margin-bottom: 20px; /* Add some space below the heading */
+  padding-bottom: 10px; /* Add some space between the border and the text */
+}
+
 .disclaimer {
   text-align: center;
 }
@@ -72,34 +84,66 @@ h1 {
 }
 
 .content {
-    max-width: 500px;
-    margin: auto;
-    border-radius: 25px;
-    border: 2px solid rgba(198, 255, 203);
-    padding: 20px;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
+  max-width: 500px; /* Or 750px for .content-wide */
+  margin: 0 auto;
+  border-radius: 25px;
+  border: 2px solid rgba(198, 255, 203);
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
 .content-wide {
-    max-width: 750px;
-    margin: auto;
-    border-radius: 25px;
-    border: 2px solid rgba(198, 255, 203);
-    padding: 20px;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
+  max-width: 750px; /* Or 750px for .content-wide */
+  margin: 0 auto;
+  border-radius: 25px;
+  border: 2px solid rgba(198, 255, 203);
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .pad-qs{
     padding: 5px;
 }
 
-.gradetable{
-  margin: auto;
-  border:1px solid black;
+.gradetable {
+  width: 50%;
+  text-align: center;
+  border-collapse: collapse;
+  border: 2px solid #ccc;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gradetable thead {
+  background-color: #f2f2f2;
+}
+
+.gradetable th,
+.gradetable td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+.gradetable th {
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+.gradetable input[type=number] {
+  width: 50px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.gradetable input[type=number]:focus {
+  outline: none;
+  border: 1px solid #66afe9;
+  box-shadow: 0px 0px 5px #66afe9;
 }
 
 .hometitle{
