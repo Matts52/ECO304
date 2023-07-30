@@ -4,7 +4,7 @@ window.onload = function () {
 
     function calcGrades() {
         //weights [Assignments, Labs, Final]
-        let weights = [0.06, 0.02, 0.04, 0.175, 0.425];
+        let weights = [0.08, 0.03, 0.14, 0.37];
         let assignments = [];
         let labs = [];
         let totalGrade = 0;
@@ -20,7 +20,7 @@ window.onload = function () {
         labs.push(document.getElementById("L1Grade").value);
         labs.push(document.getElementById("L2Grade").value);
         labs.push(document.getElementById("L3Grade").value);
-        attendance = document.getElementById("AGrade").value;
+        //attendance = document.getElementById("AGrade").value;
         midterm = document.getElementById("MGrade").value;
         final = document.getElementById("FGrade").value;
 
@@ -64,20 +64,20 @@ window.onload = function () {
         }
 
         //add in the final
-        if (attendance != ""){
-            totalGrade += attendance * weights[2];
-            totalWeight += weights[2];
-        }
+        //if (attendance != ""){
+        //    totalGrade += attendance * weights[2];
+        //    totalWeight += weights[2];
+        //}
 
         //add in the final
         if (midterm != ""){
-            totalGrade += midterm * weights[3];
+            totalGrade += midterm * weights[2];
             totalWeight += weights[3];
         }
 
         //add in the final
         if (final != ""){
-            totalGrade += final * weights[4];
+            totalGrade += final * weights[3];
             totalWeight += weights[4];
         }
 
