@@ -72,13 +72,13 @@ window.onload = function () {
         //add in the final
         if (midterm != ""){
             totalGrade += midterm * weights[2];
-            totalWeight += weights[3];
+            totalWeight += weights[2];
         }
 
         //add in the final
         if (final != ""){
             totalGrade += final * weights[3];
-            totalWeight += weights[4];
+            totalWeight += weights[3];
         }
 
         console.log(totalGrade, totalWeight)
