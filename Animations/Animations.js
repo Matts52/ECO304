@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     
-    generateNavbar()
+    generateNavbar();
 
     // Define an object to map option values to video sources
     var videoSources = {

@@ -3,6 +3,8 @@ function generateNavbar() {
     // Get the current page URL
     var currentPage = window.location.pathname;
  
+   console.log(currentPage)
+
     // Define the navigation links
     var navLinks = [
        { id: 'home', text: 'Home', href: '/ECO304/' },
