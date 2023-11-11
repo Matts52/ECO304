@@ -5,7 +5,7 @@ function generateNavbar() {
  
    console.log(currentPage)
 
-   fixedLocation = '/ECO304'
+   fixedLocation = ''
 
     // Define the navigation links
     var navLinks = [
