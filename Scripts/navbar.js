@@ -3,9 +3,7 @@ function generateNavbar() {
     // Get the current page URL
     var currentPage = window.location.pathname;
  
-   console.log(currentPage)
-
-   fixedLocation = ''
+    fixedLocation = '/ECO304'
 
     // Define the navigation links
     var navLinks = [
@@ -14,7 +12,8 @@ function generateNavbar() {
        { id: 'visualizations', text: 'Visualizations', href: '/Visualizations' },
        { id: 'animations', text: 'Animations', href: '/Animations' },
        { id: 'gradeCalc', text: 'Grade Calculator', href: '/GradeCalc' },
-       { id: 'glossary', text: 'Glossary', href: '/Glossary' }
+       { id: 'glossary', text: 'Glossary', href: '/Glossary' },
+       { id: 'resources', text: 'Resources', href: '/Resources' }
     ];
  
     // Create the navbar HTML

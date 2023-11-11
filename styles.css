@@ -146,6 +146,24 @@ h2 {
   box-shadow: 0px 0px 5px #66afe9;
 }
 
+.resource-list{
+  text-align: center;
+  list-style: none; /* Remove bullet points */
+  padding: 0;
+}
+
+.resource-list a {
+  text-decoration: none;
+  color: #333; 
+  display: block; 
+  padding: 10px;
+  font-size: 20pt;
+}
+
+.resource-list a:hover {
+  background-color: #f0f0f0; 
+}
+
 .hometitle{
   left: 0;
   line-height: 200px;
@@ -265,6 +283,7 @@ hr.grades:after { content: "Grade Calculator";}
 
 hr.animation:after { content: "Animations";}
 
+hr.resources:after { content: "Extra Resources";}
 
 
 
