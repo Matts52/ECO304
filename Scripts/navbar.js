@@ -33,3 +33,5 @@ function generateNavbar() {
  
  // Call the function when the page is loaded
  window.onload = generateNavbar;
+
+ 
