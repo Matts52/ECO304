@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     
+    generateNavbar()
+
     // Define an object to map option values to video sources
     var videoSources = {
         "option1": "../Assets/ExpectedValue.mp4",

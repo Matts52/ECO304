@@ -3,6 +3,7 @@
 
 window.onload = function () {
 
+  generateNavbar();
 
   /* Global variables affecting the visualizations, bad practice but oh well :(   */
   var bins = 10;

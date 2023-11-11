@@ -1,5 +1,7 @@
 window.onload = function () {
 
+  generateNavbar();
+
   /* add event listeners */
   document.getElementById("genQ1").addEventListener("click", genQ1);
   document.getElementById("genQ2").addEventListener("click", genQ2); 

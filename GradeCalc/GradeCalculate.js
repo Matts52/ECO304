@@ -1,5 +1,7 @@
 window.onload = function () {
 
+    generateNavbar();
+
     document.getElementById("calcGrade").addEventListener("click", calcGrades);
 
     function calcGrades() {
