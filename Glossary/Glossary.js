@@ -3,6 +3,7 @@
 
 window.onload = function () {
 
+    generateNavbar()
 
     fetch('../Data/Glossary_Data.json')
         .then(response => response.json())

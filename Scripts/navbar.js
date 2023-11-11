@@ -30,8 +30,6 @@ function generateNavbar() {
        currentPageLink.classList.add('active');
     }
  }
- 
- // Call the function when the page is loaded
- window.onload = generateNavbar;
 
  
+
