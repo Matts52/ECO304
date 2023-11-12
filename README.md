@@ -8,6 +8,7 @@ Table of Contents:
   - [Glossary](#glossary)
   - [Grade Calculator](#grade-calculator)
   - [Question Generator](#question-generator)
+  - [Resources](#resources)
   - [Visualizations](#visualizations)
 
 
@@ -29,6 +30,10 @@ On this page, students are able to input their received grade on course material
 ## Question Generator
 
 Students are able to generate data for sample questions regarding calculations introduced within the course. This is meant to serve as simply a helper tool for generating rational sample data with ease.
+
+## Resources
+
+A list of external materials that students may find helpful when looking to gain intution and another perspective at course material
 
 ## Visualizations
 
