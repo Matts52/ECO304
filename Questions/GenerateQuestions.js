@@ -28,7 +28,8 @@ window.onload = function () {
       <h2>${question}</h2>
       <input class="button-68" type="button" id="gen${questionId}" value="Generate Question">
       <input class="button-68" type="button" id="ans${questionId}" value="Show Answer">
-      <table class="question" id="${questionId}Text"></table>
+      <p id="${questionId}Text"></p>
+      <table class="question" id="${questionId}Table"></table>
       <p id="${questionId}Ans1"></p>
       <p id="${questionId}Ans2"></p>
       <p id="${questionId}Ans3"></p>
@@ -39,7 +40,7 @@ window.onload = function () {
     questionContainer.appendChild(contentDiv);
   });
 
-  
+
   // Add event listeners for generating questions
   questionIds.forEach((id) => {
     document.getElementById(`gen${id}`).addEventListener("click", () => generateQuestion(id));
