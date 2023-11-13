@@ -95,7 +95,7 @@ function generateQuestion(question){
     }
   
     //write the answers to the output table
-    document.getElementById("Q1Text").innerHTML = table_text;
+    document.getElementById("Q1Table").innerHTML = table_text;
     document.getElementById("Q1Ans1").innerHTML = "E[X] = "+(Math.round(Q1Ans1*1000)/1000).toString();
     document.getElementById("Q1Ans2").innerHTML = "Var(X) = "+(Math.round(Q1Ans2*1000)/1000).toString();
     document.getElementById("Q1Ans3").innerHTML = "F("+fval.toString()+") = "+(Math.round(Q1Ans3*1000)/1000).toString();
@@ -147,7 +147,7 @@ function generateQuestion(question){
     let condYonX = (probs[rand]/(probs[rand]+probs[rand+3]))*yvals[rand] + (probs[rand+3]/(probs[rand]+probs[rand+3]))*yvals[rand+3];
   
     //print out our table and answers
-    document.getElementById("Q2Text").innerHTML = table_text;
+    document.getElementById("Q2Table").innerHTML = table_text;
     document.getElementById("Q2Ans1").innerHTML = "E[X] = "+(Math.round(margexpX*1000)/1000).toString();
     document.getElementById("Q2Ans2").innerHTML = "E[Y] = "+(Math.round(margexpY*1000)/1000).toString();
     document.getElementById("Q2Ans3").innerHTML = "E[XY] = "+(Math.round(multXY*1000)/1000).toString();
@@ -257,6 +257,8 @@ function generateQuestion(question){
   }
   variance = variance/n
   
+  console.log(table_text);
+
   //write the answers to the output table
   document.getElementById("Q5Text").innerHTML = q_text;
   document.getElementById("Q5Table").innerHTML = table_text;
