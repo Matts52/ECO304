@@ -24,7 +24,7 @@ window.onload = function () {
   document.getElementById("ansQ8").addEventListener("click", () => showAns('Q8'));
 
 
-  function showAns(question) {
+  function showAns(question, hide=false) {
     const numAnswers = {
       'Q1': 4,
       'Q2': 5,
@@ -39,31 +39,14 @@ window.onload = function () {
     for (let i = 1; i <= numAnswers; i++) {
       const element = document.getElementById(`${question}Ans${i}`);
       if (element) {
-        element.classList.toggle('hidden');
+        if (hide) {
+          element.classList.add('hidden');
+        } else {
+          element.classList.toggle('hidden');
+        }
       }
     }
   }
-
-function hideAns(question){
-  const numAnswers = {
-    'Q1': 4,
-    'Q2': 5,
-    'Q3': 3,
-    'Q4': 2,
-    'Q5': 2,
-    'Q6': 1,
-    'Q7': 1,
-    'Q8': 1,
-  }[question] || 0;
-
-  for (let i = 1; i <= numAnswers; i++) {
-    const element = document.getElementById(`${question}Ans${i}`);
-    if (element) {
-      element.classList.add('hidden');
-    }
-  }
-}
-
 
 
 /* code for generating a single variable question sample */  
@@ -107,7 +90,7 @@ function genQ1(){
     }
   
     //hide the answers
-    hideAns('Q1');
+    showAns('Q1', hide=true);
 
     //write the answers to the output table
     document.getElementById("Q1Text").innerHTML = table_text;
@@ -163,7 +146,7 @@ function genQ1(){
     let condYonX = (probs[rand]/(probs[rand]+probs[rand+3]))*yvals[rand] + (probs[rand+3]/(probs[rand]+probs[rand+3]))*yvals[rand+3];
   
     // hide answers
-    hideAns('Q2');
+    showAns('Q2', hide=true);
 
     //print out our table and answers
     document.getElementById("Q2Text").innerHTML = table_text;
@@ -206,7 +189,7 @@ function genQ1(){
     variance = Math.pow((high - low), 2)/12
   
     // hide answers
-    hideAns('Q3')
+    showAns('Q3', hide=true)
 
     //write the output
     document.getElementById("Q3Text").innerHTML = q_text;
@@ -238,7 +221,7 @@ function genQ1(){
     }
 
     // hide answers
-    hideAns('Q4');
+    showAns('Q4', hide=true);
   
     //write the output
     document.getElementById("Q4Text").innerHTML = q_text;
@@ -282,8 +265,8 @@ function genQ5(){
   }
   variance = variance/n
 
-    // hide answers
-    hideAns('Q5');
+  // hide answers
+  showAns('Q5', hide=true);
 
   //write the answers to the output table
   document.getElementById("Q5Text").innerHTML = q_text;
@@ -334,7 +317,7 @@ function genQ6(){
   }
 
   // hide answers
-  hideAns('Q6');
+  showAns('Q6', hide=true);
 
   document.getElementById("Q6Text").innerHTML = q_text;
   document.getElementById("Q6Ans1").innerHTML = q_ans;
@@ -364,7 +347,7 @@ function genQ7(){
   q_ans = "Var[X] &#8712; ("+(Math.round(ans_lower*1000)/1000).toString()+", "+(Math.round(ans_upper*1000)/1000).toString()+")";
 
   // hide answers
-  hideAns('Q7');
+  showAns('Q7', hide=true);
 
   //write to document
   document.getElementById("Q7Text").innerHTML = q_text;
@@ -399,18 +382,13 @@ function genQ8() {
     }
 
     // hide answers
-    hideAns('Q8');
+    showAns('Q8', hide=true);
 
     //write to document
     document.getElementById("Q8Text").innerHTML = q_text;
     document.getElementById("Q8Ans1").innerHTML = q_ans;
 
 }
-
-
-
-
-
 
 
 }
