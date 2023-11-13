@@ -3,6 +3,7 @@ window.onload = function () {
   generateNavbar();
 
   /* add event listeners */
+  // for generating
   document.getElementById("genQ1").addEventListener("click", genQ1);
   document.getElementById("genQ2").addEventListener("click", genQ2); 
   document.getElementById("genQ3").addEventListener("click", genQ3); 
@@ -12,10 +13,60 @@ window.onload = function () {
   document.getElementById("genQ7").addEventListener("click", genQ7);
   document.getElementById("genQ8").addEventListener("click", genQ8); 
 
+  // for answers
+  document.getElementById("ansQ1").addEventListener("click", () => showAns('Q1'));
+  document.getElementById("ansQ2").addEventListener("click", () => showAns('Q2'));
+  document.getElementById("ansQ3").addEventListener("click", () => showAns('Q3'));
+  document.getElementById("ansQ4").addEventListener("click", () => showAns('Q4'));
+  document.getElementById("ansQ5").addEventListener("click", () => showAns('Q5'));
+  document.getElementById("ansQ6").addEventListener("click", () => showAns('Q6'));
+  document.getElementById("ansQ7").addEventListener("click", () => showAns('Q7'));
+  document.getElementById("ansQ8").addEventListener("click", () => showAns('Q8'));
 
 
-  /* code for generating a single variable question sample */
+  function showAns(question) {
+    const numAnswers = {
+      'Q1': 4,
+      'Q2': 5,
+      'Q3': 3,
+      'Q4': 2,
+      'Q5': 2,
+      'Q6': 1,
+      'Q7': 1,
+      'Q8': 1,
+    }[question] || 0;
   
+    for (let i = 1; i <= numAnswers; i++) {
+      const element = document.getElementById(`${question}Ans${i}`);
+      if (element) {
+        element.classList.toggle('hidden');
+      }
+    }
+  }
+
+function hideAns(question){
+  const numAnswers = {
+    'Q1': 4,
+    'Q2': 5,
+    'Q3': 3,
+    'Q4': 2,
+    'Q5': 2,
+    'Q6': 1,
+    'Q7': 1,
+    'Q8': 1,
+  }[question] || 0;
+
+  for (let i = 1; i <= numAnswers; i++) {
+    const element = document.getElementById(`${question}Ans${i}`);
+    if (element) {
+      element.classList.add('hidden');
+    }
+  }
+}
+
+
+
+/* code for generating a single variable question sample */  
 function genQ1(){
     let numVals = getRandomInt(3, 5);
     let vals = [];
@@ -55,13 +106,17 @@ function genQ1(){
       }
     }
   
+    //hide the answers
+    hideAns('Q1');
+
     //write the answers to the output table
     document.getElementById("Q1Text").innerHTML = table_text;
     document.getElementById("Q1Ans1").innerHTML = "E[X] = "+(Math.round(Q1Ans1*1000)/1000).toString();
     document.getElementById("Q1Ans2").innerHTML = "Var(X) = "+(Math.round(Q1Ans2*1000)/1000).toString();
     document.getElementById("Q1Ans3").innerHTML = "F("+fval.toString()+") = "+(Math.round(Q1Ans3*1000)/1000).toString();
     document.getElementById("Q1Ans4").innerHTML = "E[X<sup>2</sup>] = "+(Math.round(Q1Ans4*1000)/1000).toString();
-  
+
+
   }
   
   /* Code for generating a two variable question sample */
@@ -107,6 +162,9 @@ function genQ1(){
     let rand = getRandomInt(0,2);
     let condYonX = (probs[rand]/(probs[rand]+probs[rand+3]))*yvals[rand] + (probs[rand+3]/(probs[rand]+probs[rand+3]))*yvals[rand+3];
   
+    // hide answers
+    hideAns('Q2');
+
     //print out our table and answers
     document.getElementById("Q2Text").innerHTML = table_text;
     document.getElementById("Q2Ans1").innerHTML = "E[X] = "+(Math.round(margexpX*1000)/1000).toString();
@@ -147,6 +205,9 @@ function genQ1(){
     expect = (low + high)/2
     variance = Math.pow((high - low), 2)/12
   
+    // hide answers
+    hideAns('Q3')
+
     //write the output
     document.getElementById("Q3Text").innerHTML = q_text;
     document.getElementById("Q3Ans1").innerHTML = "Probability = "+(Math.round(ans*1000)/1000).toString();
@@ -175,6 +236,9 @@ function genQ1(){
     } else {
       ans = normalcdf(zval);
     }
+
+    // hide answers
+    hideAns('Q4');
   
     //write the output
     document.getElementById("Q4Text").innerHTML = q_text;
@@ -217,6 +281,9 @@ function genQ5(){
     variance = variance + Math.pow( (xvals[i] - expected),2) * newval;
   }
   variance = variance/n
+
+    // hide answers
+    hideAns('Q5');
 
   //write the answers to the output table
   document.getElementById("Q5Text").innerHTML = q_text;
@@ -266,6 +333,9 @@ function genQ6(){
     q_ans = "E[X] &#8712; ("+(Math.round(ans_lower*1000)/1000).toString()+", "+(Math.round(ans_upper*1000)/1000).toString()+")";
   }
 
+  // hide answers
+  hideAns('Q6');
+
   document.getElementById("Q6Text").innerHTML = q_text;
   document.getElementById("Q6Ans1").innerHTML = q_ans;
 
@@ -292,6 +362,9 @@ function genQ7(){
   ans_upper = ((n-1)*variance)/chilowcritval;
 
   q_ans = "Var[X] &#8712; ("+(Math.round(ans_lower*1000)/1000).toString()+", "+(Math.round(ans_upper*1000)/1000).toString()+")";
+
+  // hide answers
+  hideAns('Q7');
 
   //write to document
   document.getElementById("Q7Text").innerHTML = q_text;
@@ -324,6 +397,9 @@ function genQ8() {
     } else {
       q_ans = "Fail to reject the Null Hypothesis"
     }
+
+    // hide answers
+    hideAns('Q8');
 
     //write to document
     document.getElementById("Q8Text").innerHTML = q_text;

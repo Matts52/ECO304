@@ -178,6 +178,10 @@ h2 {
   color: rgb(62, 111, 53)
 }
 
+.hidden{
+  visibility: hidden;
+}
+
 /* CSS for the Site Buttons */
 .button-68 {
   appearance: none;
