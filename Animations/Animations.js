@@ -8,7 +8,8 @@ document.addEventListener("DOMContentLoaded", function () {
         "option2": "../Assets/ContinuousExpectation.mp4",
         "option3": "../Assets/ConditionalProbability.mp4",
         "option4": "../Assets/DGPSampling.mp4",
-        "option5": "../Assets/BiasedEstimator.mp4"
+        "option5": "../Assets/BiasedEstimator.mp4",
+        "option6": "../Assets/HypothesisTest.mp4"
     };
     
     // get our elements
