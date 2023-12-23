@@ -1,5 +1,11 @@
 window.onload = function() {
     generateNavbar();
+
+    // Set selected values based on URL parameters
+    setSelectedBasedOnUrlParam("selectSemester", "semester");
+    setSelectedBasedOnUrlParam("selectMajor", "major");
+
+    // Generate chart
     visualizeGrades();
 }
 
@@ -8,11 +14,23 @@ async function visualizeGrades() {
 
     // Fetch project data from JSON file and filter for selected category
     const response = await fetch('../Data/Historical_Grades.json');
-    const grades_data = await response.json();
-    const data = grades_data.filter(record => record.Semester.trim() === 'Fall 2023');
+    var grades_data = await response.json();
 
+    const semParam = getUrlParameter('semester')
+    const majorParam = getUrlParameter('major')
 
-    console.table(data);
+    // do any filtering based on url parameters
+    if (semParam && semParam != 'All') {
+        grades_data = grades_data.filter(record => record.Semester.trim() === semParam);
+    }
+
+    if (majorParam && majorParam != 'All') {
+        grades_data = grades_data.filter(record => record.Major.trim() === majorParam);
+    }
+
+    data = grades_data;
+
+    //console.table(data);
 
     // Initialize an array to store counts in each bucket
     const bucketCounts = Array(20).fill(0);
@@ -60,11 +78,44 @@ async function visualizeGrades() {
 }
 
 
-// wait for select box change
-$("#selectBox").change(function() {
-    var optionValue = $(this).val();
+// Function to get URL parameters
+function getUrlParameter(name) {
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(window.location.href);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  }
+  
+// Function to set selected attribute based on URL parameters
+function setSelectedBasedOnUrlParam(selectId, paramName) {
+    var paramValue = getUrlParameter(paramName);
+    if (paramValue) {
+      $("#" + selectId).val(paramValue);
+    }
+  }
+
+
+
+// Wait for select box changes
+$("#selectSemester, #selectMajor").change(function() {
+    var semesterValue = $("#selectSemester").val();
+    var majorValue = $("#selectMajor").val();
+    
     var url = [location.protocol, '//', location.host, location.pathname].join('');
-  window.location = url+"?semester=" + optionValue;
+    
+    // Include selected values in the URL
+    if (semesterValue) {
+      url += "?semester=" + semesterValue;
+    }
+    
+    if (majorValue) {
+      // Add '&' if semesterValue is present in the URL
+      url += (semesterValue ? "&" : "?") + "major=" + majorValue;
+    }
+    
+    window.location = url;
   });
 
 
