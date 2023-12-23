@@ -11,7 +11,8 @@ function generateNavbar() {
        { id: 'questions', text: 'Questions', href: '/Questions' },
        { id: 'visualizations', text: 'Visualizations', href: '/Visualizations' },
        { id: 'animations', text: 'Animations', href: '/Animations' },
-       { id: 'gradeCalc', text: 'Grade Calculator', href: '/GradeCalc' },
+       { id: 'gradeCalc', text: 'Grade Calculator', href: '/Grades' },
+       { id: 'histGrades', text: 'Historical Grades', href: '/HistoricalGrades' },
        { id: 'glossary', text: 'Glossary', href: '/Glossary' },
        { id: 'resources', text: 'Resources', href: '/Resources' }
     ];
