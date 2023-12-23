@@ -9,14 +9,16 @@ async function visualizeGrades() {
     // Fetch project data from JSON file and filter for selected category
     const response = await fetch('../Data/Historical_Grades.json');
     const grades_data = await response.json();
+    const data = grades_data.filter(record => record.Semester.trim() === 'Fall 2023');
 
-    console.table(grades_data);
+
+    console.table(data);
 
     // Initialize an array to store counts in each bucket
     const bucketCounts = Array(20).fill(0);
 
     // Calculate counts in each bucket
-    grades_data.forEach(entry => {
+    data.forEach(entry => {
       const grade = entry.Grade;
       const bucketIndex = Math.floor(grade / 5); // Assuming 20 buckets, each of width 5
       bucketCounts[bucketIndex]++;
@@ -57,5 +59,12 @@ async function visualizeGrades() {
     });
 }
 
+
+// wait for select box change
+$("#selectBox").change(function() {
+    var optionValue = $(this).val();
+    var url = [location.protocol, '//', location.host, location.pathname].join('');
+  window.location = url+"?semester=" + optionValue;
+  });
 
 
