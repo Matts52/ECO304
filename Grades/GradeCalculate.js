@@ -6,7 +6,7 @@ window.onload = function () {
 
     function calcGrades() {
         //weights [Assignments, Labs, Final]
-        let weights = [0.08, 0.03, 0.14, 0.37];
+        let weights = [0.08, 0.02, 0.15, 0.39];
         let assignments = [];
         let labs = [];
         let totalGrade = 0;
