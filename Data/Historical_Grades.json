@@ -443,5 +443,80 @@
         "Semester": "Fall 2023",
         "Grade": 94,
         "Major": "STAT"
+    },
+    {
+        "Semester": "Winter 2024",
+        "Grade": 69,
+        "Major": "BUEC"
+    },
+    {
+        "Semester": "Winter 2024",
+        "Grade": 54,
+        "Major": "ECON"
+    },
+    {
+        "Semester": "Winter 2024",
+        "Grade": 97,
+        "Major": "ECON"
+    },
+    {
+        "Semester": "Winter 2024",
+        "Grade": 96,
+        "Major": "BE"
+    },
+    {
+        "Semester": "Winter 2024",
+        "Grade": 55,
+        "Major": "FIN"
+    },
+    {
+        "Semester": "Winter 2024",
+        "Grade": 94,
+        "Major": "STAT"
+    },
+    {
+        "Semester": "Winter 2024",
+        "Grade": 22,
+        "Major": "ECON"
+    },
+    {
+        "Semester": "Winter 2024",
+        "Grade": 78,
+        "Major": "BUEC"
+    },
+    {
+        "Semester": "Winter 2024",
+        "Grade": 95,
+        "Major": "STAT"
+    },
+    {
+        "Semester": "Winter 2024",
+        "Grade": 70,
+        "Major": "BUEC"
+    },
+    {
+        "Semester": "Winter 2024",
+        "Grade": 83,
+        "Major": "ECON"
+    },
+    {
+        "Semester": "Winter 2024",
+        "Grade": 50,
+        "Major": "ECON"
+    },
+    {
+        "Semester": "Winter 2024",
+        "Grade": 67,
+        "Major": "ECON"
+    },
+    {
+        "Semester": "Winter 2024",
+        "Grade": 76,
+        "Major": "BUEC"
+    },
+    {
+        "Semester": "Winter 2024",
+        "Grade": 66,
+        "Major": "ECON"
     }
 ]
