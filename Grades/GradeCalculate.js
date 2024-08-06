@@ -30,21 +30,21 @@ window.onload = function () {
         let min = 101;
         let minInd = -1;
         let containMissing = false
-        for (let i = 0; i < assignments.length; i++){
+        for (let i = 0; i < assignments.length; i++) {
             //check for missing assignments
-            if (assignments[i] == ""){
+            if (assignments[i] == "") {
                 containMissing = true;
                 break;
             }
 
-            if (Number(assignments[i]) <= min){
+            if (Number(assignments[i]) <= min) {
                 min = assignments[i];
                 minInd = i;
             }
         }
 
         //remove the empty or lowest assignment
-        if (containMissing){
+        if (containMissing) {
             assignments = assignments.filter(a => a !== "");
         } else {
             assignments.splice(minInd, 1);
@@ -54,13 +54,13 @@ window.onload = function () {
         labs = labs.filter(a => a !== "");
 
         //go through each assignment
-        for (let i = 0; i < assignments.length; i++){
+        for (let i = 0; i < assignments.length; i++) {
             totalGrade += assignments[i] * weights[0];
             totalWeight += weights[0];
         }
 
         //go through each lab
-        for (let i = 0; i < labs.length; i++){
+        for (let i = 0; i < labs.length; i++) {
             totalGrade += labs[i] * weights[1];
             totalWeight += weights[1];
         }
@@ -72,21 +72,21 @@ window.onload = function () {
         //}
 
         //add in the final
-        if (midterm != ""){
+        if (midterm != "") {
             totalGrade += midterm * weights[2];
             totalWeight += weights[2];
         }
 
         //add in the final
-        if (final != ""){
+        if (final != "") {
             totalGrade += final * weights[3];
             totalWeight += weights[3];
         }
 
         console.log(totalGrade, totalWeight)
 
-        document.getElementById("gradecalc_curr").innerHTML = "Your current grade is <b>"+(Math.round(((totalGrade/100)/totalWeight)*1000)/10).toString()+"%</b> \
-                based on "+Math.round((totalWeight*1000)/10).toString()+"% of the graded course material.";
+        document.getElementById("gradecalc_curr").innerHTML = "Your current grade is <b>" + (Math.round(((totalGrade / 100) / totalWeight) * 1000) / 10).toString() + "%</b> \
+                based on "+ Math.round((totalWeight * 1000) / 10).toString() + "% of the graded course material.";
 
     }
 

@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font:normal 75% Arial, Helvetica, sans-serif;
+  font: normal 75% Arial, Helvetica, sans-serif;
 }
 
 .glossary {
@@ -9,12 +9,12 @@ body {
   font-weight: bold;
 }
 
-.glosspara > p {
+.glosspara>p {
   margin-left: 5%;
   margin-right: 5%;
 }
 
-.glosspara > h3 {
+.glosspara>h3 {
   margin-left: 5%;
   margin-right: 5%;
   font-size: large;
@@ -24,7 +24,7 @@ body {
 /* landig page gradient animation */
 body.landing {
   margin: 0;
-  font:normal 75% Arial, Helvetica, sans-serif;
+  font: normal 75% Arial, Helvetica, sans-serif;
   background: linear-gradient(135deg, #ffffff, rgb(126, 232, 107));
   background-size: 250% 250%;
   animation: gradient 10s ease infinite;
@@ -33,15 +33,15 @@ body.landing {
 
 @keyframes gradient {
   0% {
-      background-position: 0% 50%;
+    background-position: 0% 50%;
   }
 
   50% {
-      background-position: 100% 50%;
+    background-position: 100% 50%;
   }
 
   100% {
-      background-position: 0% 50%;
+    background-position: 0% 50%;
   }
 }
 
@@ -62,39 +62,36 @@ h1 {
 }
 
 h2 {
-  font-family: "Roboto", sans-serif; /* Choose a font that matches your site's style */
+  font-family: "Roboto", sans-serif;
+  /* Choose a font that matches your site's style */
   font-size: 20px;
   font-weight: bold;
-  color: #333; /* Choose a color that matches your site's color scheme */
+  color: #333;
+  /* Choose a color that matches your site's color scheme */
   text-align: center;
-  text-transform: uppercase; /* Make the text all caps */
-  margin-top: 40px; /* Add some space above the heading */
-  margin-bottom: 20px; /* Add some space below the heading */
-  padding-bottom: 10px; /* Add some space between the border and the text */
+  text-transform: uppercase;
+  /* Make the text all caps */
+  margin-top: 40px;
+  /* Add some space above the heading */
+  margin-bottom: 20px;
+  /* Add some space below the heading */
+  padding-bottom: 10px;
+  /* Add some space between the border and the text */
 }
 
 .disclaimer {
   text-align: center;
 }
 
-.question{
+.question {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
 }
 
 .content {
-  max-width: 500px; /* Or 750px for .content-wide */
-  margin: 0 auto;
-  border-radius: 25px;
-  border: 2px solid rgba(198, 255, 203);
-  padding: 20px;
-  text-align: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-
-.content-wide {
-  max-width: 750px; /* Or 750px for .content-wide */
+  max-width: 500px;
+  /* Or 750px for .content-wide */
   margin: 0 auto;
   border-radius: 25px;
   border: 2px solid rgba(198, 255, 203);
@@ -103,8 +100,19 @@ h2 {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.pad-qs{
-    padding: 5px;
+.content-wide {
+  max-width: 750px;
+  /* Or 750px for .content-wide */
+  margin: 0 auto;
+  border-radius: 25px;
+  border: 2px solid rgba(198, 255, 203);
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pad-qs {
+  padding: 5px;
 }
 
 .gradetable {
@@ -146,25 +154,26 @@ h2 {
   box-shadow: 0px 0px 5px #66afe9;
 }
 
-.resource-list{
+.resource-list {
   text-align: center;
-  list-style: none; /* Remove bullet points */
+  list-style: none;
+  /* Remove bullet points */
   padding: 0;
 }
 
 .resource-list a {
   text-decoration: none;
-  color: #333; 
-  display: block; 
+  color: #333;
+  display: block;
   padding: 10px;
   font-size: 20pt;
 }
 
 .resource-list a:hover {
-  background-color: #f0f0f0; 
+  background-color: #f0f0f0;
 }
 
-.hometitle{
+.hometitle {
   left: 0;
   line-height: 200px;
   margin-top: -100px;
@@ -178,7 +187,7 @@ h2 {
   color: rgb(62, 111, 53)
 }
 
-.hidden{
+.hidden {
   visibility: hidden;
 }
 
@@ -194,7 +203,7 @@ h2 {
   color: #fff;
   cursor: pointer;
   display: inline-block;
-  font-family: Inter,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-family: Inter, -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
   font-size: 12px;
   font-weight: 500;
   letter-spacing: normal;
@@ -235,7 +244,7 @@ h2 {
 .topnav {
   background-color: rgb(204, 201, 201, 0.18);
   overflow: hidden;
-  box-shadow: 0 30px 40px rgba(204, 201, 201,.2);
+  box-shadow: 0 30px 40px rgba(204, 201, 201, .2);
 }
 
 .topnav a {
@@ -262,7 +271,8 @@ h2 {
 /* Glyph, by Harry Roberts */
 
 hr.style-eight {
-  overflow: visible; /* For IE */
+  overflow: visible;
+  /* For IE */
   padding: 0;
   border: none;
   border-top: medium double #333;
@@ -270,6 +280,7 @@ hr.style-eight {
   text-align: center;
   width: 75%
 }
+
 hr.style-eight:after {
   display: inline-block;
   position: relative;
@@ -279,15 +290,22 @@ hr.style-eight:after {
   background: white;
 }
 
-hr.home:after { content: "Practice Generator"; }
+hr.home:after {
+  content: "Practice Generator";
+}
 
-hr.visualize:after { content: "Visualizations";}
+hr.visualize:after {
+  content: "Visualizations";
+}
 
-hr.grades:after { content: "Grade Calculator";}
+hr.grades:after {
+  content: "Grade Calculator";
+}
 
-hr.animation:after { content: "Animations";}
+hr.animation:after {
+  content: "Animations";
+}
 
-hr.resources:after { content: "Extra Resources";}
-
-
-
+hr.resources:after {
+  content: "Extra Resources";
+}

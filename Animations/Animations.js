@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    
+
     generateNavbar();
 
     // Define an object to map option values to video sources
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "option5": "../Assets/BiasedEstimator.mp4",
         "option6": "../Assets/HypothesisTest.mp4"
     };
-    
+
     // get our elements
     var selectBox = document.getElementById("selectBox");
     var videoElement = document.querySelector("video");
