@@ -6,7 +6,14 @@ window.onload = function () {
 
     function calcGrades() {
         //weights [Assignments, Labs, Final]
-        let weights = [0.08, 0.02, 0.15, 0.39];
+        let weights = {
+            "asn": 0.05,
+            "lab": 0.02,
+            "lab_project": 0.09,
+            "low_midterm": 0.10,
+            "high_midterm": 0.15,
+            "final": 0.35
+        };
         let assignments = [];
         let labs = [];
         let totalGrade = 0;
@@ -22,8 +29,9 @@ window.onload = function () {
         labs.push(document.getElementById("L1Grade").value);
         labs.push(document.getElementById("L2Grade").value);
         labs.push(document.getElementById("L3Grade").value);
-        //attendance = document.getElementById("AGrade").value;
-        midterm = document.getElementById("MGrade").value;
+        lab_project = document.getElementById("LPGrade").value;
+        midterm1 = document.getElementById("M1Grade").value;
+        midterm2 = document.getElementById("M2Grade").value;
         final = document.getElementById("FGrade").value;
 
         // locate the lowest assignment or missing assignments
@@ -50,37 +58,52 @@ window.onload = function () {
             assignments.splice(minInd, 1);
         }
 
-        //remove and labs not yet done
+        //remove any labs not yet done
         labs = labs.filter(a => a !== "");
 
         //go through each assignment
         for (let i = 0; i < assignments.length; i++) {
-            totalGrade += assignments[i] * weights[0];
-            totalWeight += weights[0];
+            totalGrade += assignments[i] * weights["asn"];
+            totalWeight += weights["asn"];
         }
 
         //go through each lab
         for (let i = 0; i < labs.length; i++) {
-            totalGrade += labs[i] * weights[1];
-            totalWeight += weights[1];
+            totalGrade += labs[i] * weights["lab"];
+            totalWeight += weights["lab"];
         }
 
-        //add in the final
-        //if (attendance != ""){
-        //    totalGrade += attendance * weights[2];
-        //    totalWeight += weights[2];
-        //}
+        //add in the lab project
+        if (lab_project != "") {
+            totalGrade += lab_project * weights["lab_project"];
+            totalWeight += weights["lab_project"];
+        }
 
-        //add in the final
-        if (midterm != "") {
-            totalGrade += midterm * weights[2];
-            totalWeight += weights[2];
+
+        console.log(midterm1, midterm2)
+        //add in the midterms
+        if (midterm1 != "" && midterm2 == "") {
+            totalGrade += midterm1 * weights["high_midterm"];
+            totalWeight += weights["high_midterm"];
+        }
+        else if (midterm1 != "" && midterm2 != "") {
+            if (midterm1 < midterm2) {
+                totalGrade += midterm1 * weights["low_midterm"];
+                totalWeight += weights["low_midterm"];
+                totalGrade += midterm2 * weights["high_midterm"];
+                totalWeight += weights["high_midterm"];
+            } else {
+                totalGrade += midterm1 * weights["high_midterm"];
+                totalWeight += weights["high_midterm"];
+                totalGrade += midterm2 * weights["low_midterm"];
+                totalWeight += weights["low_midterm"];
+            }
         }
 
         //add in the final
         if (final != "") {
-            totalGrade += final * weights[3];
-            totalWeight += weights[3];
+            totalGrade += final * weights["final"];
+            totalWeight += weights["final"];
         }
 
         console.log(totalGrade, totalWeight)
