@@ -518,5 +518,115 @@
         "Semester": "Winter 2024",
         "Grade": 66,
         "Major": "ECON"
+    },
+    {
+        "Semester": "Fall 2024",
+        "Grade": 58,
+        "Major": "BUEC"
+    },
+    {
+        "Semester": "Fall 2024",
+        "Grade": 50,
+        "Major": "ECON"
+    },
+    {
+        "Semester": "Fall 2024",
+        "Grade": 52,
+        "Major": "CMPT"
+    },
+    {
+        "Semester": "Fall 2024",
+        "Grade": 52,
+        "Major": "BUEC"
+    },
+    {
+        "Semester": "Fall 2024",
+        "Grade": 34,
+        "Major": "ECON"
+    },
+    {
+        "Semester": "Fall 2024",
+        "Grade": 87,
+        "Major": "BUEC"
+    },
+    {
+        "Semester": "Fall 2024",
+        "Grade": 50,
+        "Major": "Undeclared"
+    },
+    {
+        "Semester": "Fall 2024",
+        "Grade": 95,
+        "Major": "ECON"
+    },
+    {
+        "Semester": "Fall 2024",
+        "Grade": 67,
+        "Major": "AGEC"
+    },
+    {
+        "Semester": "Fall 2024",
+        "Grade": 80,
+        "Major": "BUEC"
+    },
+    {
+        "Semester": "Fall 2024",
+        "Grade": "W",
+        "Major": "BUEC"
+    },
+    {
+        "Semester": "Fall 2024",
+        "Grade": 74,
+        "Major": "ECON"
+    },
+    {
+        "Semester": "Fall 2024",
+        "Grade": 99,
+        "Major": "BUEC"
+    },
+    {
+        "Semester": "Fall 2024",
+        "Grade": 72,
+        "Major": "ECON"
+    },
+    {
+        "Semester": "Fall 2024",
+        "Grade": 85,
+        "Major": "ECON"
+    },
+    {
+        "Semester": "Fall 2024",
+        "Grade": 77,
+        "Major": "BUEC"
+    },
+    {
+        "Semester": "Fall 2024",
+        "Grade": 60,
+        "Major": "Undeclared"
+    },
+    {
+        "Semester": "Fall 2024",
+        "Grade": 64,
+        "Major": "ECON"
+    },
+    {
+        "Semester": "Fall 2024",
+        "Grade": 61,
+        "Major": "ECON"
+    },
+    {
+        "Semester": "Fall 2024",
+        "Grade": 87,
+        "Major": "ECON"
+    },
+    {
+        "Semester": "Fall 2024",
+        "Grade": 78,
+        "Major": "BUEC"
+    },
+    {
+        "Semester": "Fall 2024",
+        "Grade": 71,
+        "Major": "BUEC"
     }
 ]
