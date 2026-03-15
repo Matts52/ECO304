@@ -1,7 +1,7 @@
 // Function to generate the navbar
 function generateNavbar() {
    var currentPage = window.location.pathname;
-   var fixedLocation = '/ECO304';
+   var fixedLocation = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') ? '' : '/ECO304';
 
    var navLinks = [
       { id: 'home', text: 'Home', href: '/' },

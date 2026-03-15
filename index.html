@@ -64,6 +64,14 @@
         </a>
     </main>
 
+    <script>
+      (function() {
+        var base = (location.hostname === 'localhost' || location.hostname === '127.0.0.1') ? '' : '/ECO304';
+        document.querySelectorAll('.feature-card').forEach(function(a) {
+          a.href = base + a.getAttribute('href').replace('/ECO304', '');
+        });
+      })();
+    </script>
     <script type="text/javascript" src="index.js"></script>
 
 </body>
