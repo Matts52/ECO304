@@ -22,19 +22,28 @@ window.onload = function () {
   questions.forEach((question, index) => {
     const questionId = `Q${index + 1}`;
     const contentDiv = document.createElement("div");
-    contentDiv.classList.add("content");
+    contentDiv.classList.add("question-card");
 
     contentDiv.innerHTML = `
-      <h2>${question}</h2>
-      <input class="button-68" type="button" id="gen${questionId}" value="Generate Question">
-      <input class="button-68" type="button" id="ans${questionId}" value="Show Answer">
-      <p id="${questionId}Text"></p>
-      <table class="question" id="${questionId}Table"></table>
-      <p id="${questionId}Ans1"></p>
-      <p id="${questionId}Ans2"></p>
-      <p id="${questionId}Ans3"></p>
-      <p id="${questionId}Ans4"></p>
-      <p id="${questionId}Ans5"></p>
+      <div class="question-card-header">
+        <span class="q-badge">Q${index + 1}</span>
+        <h2>${question}</h2>
+      </div>
+      <div class="question-body">
+        <p id="${questionId}Text" class="question-prompt"></p>
+        <table class="question" id="${questionId}Table"></table>
+      </div>
+      <div class="question-card-actions">
+        <input class="button-68" type="button" id="gen${questionId}" value="Generate Question">
+        <input class="button-68" type="button" id="ans${questionId}" value="Show Answer">
+      </div>
+      <div class="answer-block">
+        <p id="${questionId}Ans1" class="q-answer hidden"></p>
+        <p id="${questionId}Ans2" class="q-answer hidden"></p>
+        <p id="${questionId}Ans3" class="q-answer hidden"></p>
+        <p id="${questionId}Ans4" class="q-answer hidden"></p>
+        <p id="${questionId}Ans5" class="q-answer hidden"></p>
+      </div>
     `;
 
     questionContainer.appendChild(contentDiv);

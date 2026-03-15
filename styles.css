@@ -189,6 +189,89 @@ h2 {
   padding: 5px;
 }
 
+/* Question cards */
+.question-card {
+  max-width: 680px;
+  margin: 24px auto;
+  background: #fff;
+  border: 1px solid #e4ede4;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.question-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 24px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.question-card-header h2 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a4a28;
+  text-align: left;
+  text-transform: none;
+  padding: 0;
+}
+
+.q-badge {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #1a4a28;
+  color: #fff;
+  font-family: Inter, -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.question-body {
+  padding: 16px 24px;
+  min-height: 24px;
+}
+
+.question-prompt {
+  margin: 0 0 12px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  text-align: left;
+}
+
+.question-card-actions {
+  padding: 0 24px 16px;
+  display: flex;
+  gap: 8px;
+}
+
+.answer-block {
+  margin: 0 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.q-answer:not(.hidden) {
+  background-color: #f0faf4;
+  border: 1px solid #a8ddb5;
+  border-radius: 6px;
+  padding: 8px 14px;
+  color: #1a4a28;
+  font-family: Inter, -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+  margin: 0;
+}
+
 .gradetable {
   width: 50%;
   text-align: center;
@@ -249,7 +332,7 @@ h2 {
 
 
 .hidden {
-  visibility: hidden;
+  display: none;
 }
 
 /* CSS for the Site Buttons */
