@@ -1,11 +1,8 @@
 // Function to generate the navbar
 function generateNavbar() {
-   // Get the current page URL
    var currentPage = window.location.pathname;
+   var fixedLocation = '/ECO304';
 
-   fixedLocation = '/ECO304'
-
-   // Define the navigation links
    var navLinks = [
       { id: 'home', text: 'Home', href: '/' },
       { id: 'questions', text: 'Questions', href: '/Questions' },
@@ -17,19 +14,22 @@ function generateNavbar() {
       { id: 'resources', text: 'Resources', href: '/Resources' }
    ];
 
-   // Create the navbar HTML
-   var navbarHtml = '<div class="topnav">';
+   var linksHtml = '';
    for (var i = 0; i < navLinks.length; i++) {
       var link = navLinks[i];
-      navbarHtml += '<a id="' + link.id + '" href="' + fixedLocation + link.href + '">' + link.text + '</a>';
+      linksHtml += '<a id="' + link.id + '" href="' + fixedLocation + link.href + '">' + link.text + '</a>';
    }
-   navbarHtml += '</div>';
 
-   // Set the generated navbar in the container
+   var navbarHtml =
+      '<nav class="topnav">' +
+         '<a class="nav-wordmark" href="' + fixedLocation + '/">ECO304</a>' +
+         '<button class="nav-hamburger" aria-label="Toggle navigation" onclick="this.classList.toggle(\'open\'); document.getElementById(\'nav-links\').classList.toggle(\'open\')">&#9776;</button>' +
+         '<div id="nav-links" class="nav-links">' + linksHtml + '</div>' +
+      '</nav>';
+
    document.getElementById('navbar-container').innerHTML = navbarHtml;
 
-   // Set the active class on the current page link
-   var currentPageLink = document.querySelector('a[href="' + currentPage + '"]');
+   var currentPageLink = document.querySelector('#nav-links a[href="' + currentPage + '"]');
    if (currentPageLink) {
       currentPageLink.classList.add('active');
    }
