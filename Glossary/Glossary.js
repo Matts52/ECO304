@@ -8,7 +8,6 @@ window.onload = function () {
         .then(data => {
 
             for (var i = 0; i < data.Sheet1.length; i++) {
-                //console.log(data.Sheet1[i].Chapter);
                 var entry = document.createElement("div");
                 entry.classList.add("gloss-entry");
 
@@ -24,6 +23,28 @@ window.onload = function () {
                 entry.appendChild(def);
                 document.getElementById(data.Sheet1[i].Chapter).appendChild(entry);
             }
+
+            document.getElementById("glossSearch").addEventListener("input", function () {
+                var query = this.value.trim().toLowerCase();
+                var entries = document.querySelectorAll(".gloss-entry");
+                var anyVisible = false;
+
+                entries.forEach(function (entry) {
+                    var termText = entry.querySelector(".gloss-term").textContent.toLowerCase();
+                    var defText = entry.querySelector(".gloss-def").textContent.toLowerCase();
+                    var match = !query || termText.includes(query) || defText.includes(query);
+                    entry.style.display = match ? "" : "none";
+                    if (match) anyVisible = true;
+                });
+
+                // Hide chapter cards that have no visible entries
+                document.querySelectorAll(".gloss-card").forEach(function (card) {
+                    var visibleEntries = card.querySelectorAll(".gloss-entry:not([style*='display: none'])");
+                    card.style.display = visibleEntries.length > 0 ? "" : "none";
+                });
+
+                document.getElementById("glossNoResults").style.display = anyVisible ? "none" : "";
+            });
         });
 
 
