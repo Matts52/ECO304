@@ -487,6 +487,127 @@ h2 {
 }
 
 
+/* Visualization cards */
+.viz-card {
+  max-width: 680px;
+  margin: 24px auto;
+  background: #fff;
+  border: 1px solid #e4ede4;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.viz-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 24px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.viz-card-header h2 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a4a28;
+  text-align: left;
+  text-transform: none;
+  padding: 0;
+}
+
+.viz-number {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #1a4a28;
+  color: #fff;
+  font-family: Inter, -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.viz-description {
+  margin: 0;
+  padding: 16px 24px 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #444;
+  text-align: left;
+}
+
+.viz-table-wrap {
+  padding: 12px 24px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.viz-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 24px;
+  flex-wrap: wrap;
+}
+
+.viz-label {
+  font-family: Inter, -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  color: #555;
+}
+
+.viz-input {
+  width: 90px;
+  padding: 7px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.viz-input:focus {
+  outline: none;
+  border-color: #27ae60;
+  box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.15);
+}
+
+.button-secondary {
+  background-color: #fff;
+  color: #27ae60;
+  border: 1px solid #27ae60;
+  box-shadow: none;
+}
+
+.button-secondary:hover {
+  background-color: #f0faf4;
+}
+
+.viz-stat-badge {
+  display: inline-block;
+  margin: 0 24px 4px;
+  padding: 5px 14px;
+  background-color: #f0faf4;
+  border: 1px solid #a8ddb5;
+  border-radius: 20px;
+  font-family: Inter, -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a4a28;
+}
+
+.viz-stat-badge:empty {
+  display: none;
+}
+
+.viz-chart {
+  display: flex;
+  justify-content: center;
+  padding: 8px 24px 24px;
+}
+
 /* HR style */
 /* Glyph, by Harry Roberts */
 

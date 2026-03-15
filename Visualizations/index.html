@@ -26,68 +26,75 @@
 
 <body>
 
-  <!-- Simple Navbar -->
   <div id="navbar-container"></div>
 
-  <!-- Vizualizations -->
   <h1 class="title">ECO304 Visualizations</h1>
   <hr class="style-eight visualize">
 
-  <div class="pad-qs"></div>
-  <div class="content-wide">
-    <!-- Central Limit Theorem -->
-    <h2>Central Limit Theorem</h2>
-    <p id="CLTText"></p>
-    <table class="question" id="CLTTable"></table>
-    <p>How many sample means would you like to generate: <input type="number" id="numSamples"></p>
-    <div class="pad-qs"></div>
-    <input class="button-68" type="button" id="genCLT" value="Generate Samples">
-    <input class="button-68" type="button" id="resetCLT" value="Reset">
-    <div id="clt_dataviz"></div>
+  <!-- Central Limit Theorem -->
+  <div class="viz-card">
+    <div class="viz-card-header">
+      <span class="viz-number">1</span>
+      <h2>Central Limit Theorem</h2>
+    </div>
+    <p id="CLTText" class="viz-description"></p>
+    <div class="viz-table-wrap">
+      <table class="question" id="CLTTable"></table>
+    </div>
+    <div class="viz-controls">
+      <label class="viz-label" for="numSamples">Sample means to generate</label>
+      <input class="viz-input" type="number" id="numSamples" placeholder="e.g. 100">
+      <input class="button-68" type="button" id="genCLT" value="Generate">
+      <input class="button-68 button-secondary" type="button" id="resetCLT" value="Reset">
+    </div>
+    <div id="clt_dataviz" class="viz-chart"></div>
   </div>
 
-  <div class="pad-qs"></div>
-
-  <div class="content-wide">
-    <!-- Law of Large Numbers -->
-    <h2>Law of Large Numbers</h2>
-    <p id="LLNText"></p>
-    <table class="question" id="LLNTable"></table>
-    <p>How many sample means would you like to generate: <input type="number" id="numLLNSamps"></p>
-    <div class="pad-qs"></div>
-    <input class="button-68" type="button" id="genLLN" value="Play Animation">
-    <div id="lln_dataviz"></div>
+  <!-- Law of Large Numbers -->
+  <div class="viz-card">
+    <div class="viz-card-header">
+      <span class="viz-number">2</span>
+      <h2>Law of Large Numbers</h2>
+    </div>
+    <p id="LLNText" class="viz-description"></p>
+    <div class="viz-table-wrap">
+      <table class="question" id="LLNTable"></table>
+    </div>
+    <div class="viz-controls">
+      <label class="viz-label" for="numLLNSamps">Sample means to generate</label>
+      <input class="viz-input" type="number" id="numLLNSamps" placeholder="e.g. 100">
+      <input class="button-68" type="button" id="genLLN" value="Play Animation">
+    </div>
+    <div id="lln_dataviz" class="viz-chart"></div>
   </div>
 
-  <div class="pad-qs"></div>
-
-  <div class="content-wide">
-    <!-- t-Distribution Degrees of Freedom -->
-    <h2>Degrees of Freedom in the t-Distribution</h2>
-    <p id="DFTText"></p>
-    <div class="pad-qs"></div>
-    <input class="button-68" type="button" id="genDFT" value="Play Animation">
-    <div class="pad-qs"></div>
-    <p id="DegFreeText"></p>
-    <div id="dft_dataviz"></div>
+  <!-- t-Distribution Degrees of Freedom -->
+  <div class="viz-card">
+    <div class="viz-card-header">
+      <span class="viz-number">3</span>
+      <h2>Degrees of Freedom in the t-Distribution</h2>
+    </div>
+    <p id="DFTText" class="viz-description"></p>
+    <div class="viz-controls">
+      <input class="button-68" type="button" id="genDFT" value="Play Animation">
+    </div>
+    <p id="DegFreeText" class="viz-stat-badge"></p>
+    <div id="dft_dataviz" class="viz-chart"></div>
   </div>
 
-  <div class="pad-qs"></div>
-
-  <div class="content-wide">
-    <!-- Linear Regression -->
-    <h2>Linear Regression</h2>
-    <p id="RegText"></p>
-    <div class="pad-qs"></div>
-    <input class="button-68" type="button" id="genREG" value="Play Animation">
-    <div class="pad-qs"></div>
-    <p id="RegFreeText"></p>
-    <div id="reg_dataviz"></div>
+  <!-- Linear Regression -->
+  <div class="viz-card">
+    <div class="viz-card-header">
+      <span class="viz-number">4</span>
+      <h2>Linear Regression</h2>
+    </div>
+    <p id="RegText" class="viz-description"></p>
+    <div class="viz-controls">
+      <input class="button-68" type="button" id="genREG" value="Play Animation">
+    </div>
+    <p id="RegFreeText" class="viz-stat-badge"></p>
+    <div id="reg_dataviz" class="viz-chart"></div>
   </div>
-
-
-
-
 
   <p class="disclaimer">Note: Small bugs may be present. Bug fixes are encouraged in the <a
       href="https://github.com/Matts52/ECO304">Github repository!</a></p>
@@ -96,3 +103,4 @@
   <script type="text/javascript" src="Visualizations.js"></script>
 
 </body>
+</html>
