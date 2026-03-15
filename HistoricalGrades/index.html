@@ -26,50 +26,51 @@
 
 <body>
 
-  <!-- Simple Navbar -->
   <div id="navbar-container"></div>
 
+  <div class="hist-card">
+    <div class="hist-card-header">
+      <h1>Historical Grades</h1>
+      <p>Grade distributions from past ECO304 semesters.</p>
+    </div>
 
-  <!-- Grade Calculator -->
-  <h1 class="title">Historical Grades</h1>
+    <div class="hist-controls">
+      <div class="hist-filter">
+        <label class="hist-label" for="selectSemester">Semester</label>
+        <select class="hist-select" id="selectSemester">
+          <option value="All">All Semesters</option>
+          <option value="Fall 2022">Fall 2022</option>
+          <option value="Winter 2023">Winter 2023</option>
+          <option value="Fall 2023">Fall 2023</option>
+          <option value="Winter 2024">Winter 2024</option>
+          <option value="Fall 2024">Fall 2024</option>
+        </select>
+      </div>
+      <div class="hist-filter">
+        <label class="hist-label" for="selectMajor">Major</label>
+        <select class="hist-select" id="selectMajor">
+          <option value="All">All Majors</option>
+          <option value="ACC">Accounting</option>
+          <option value="AGEC">Agriculture Economics</option>
+          <option value="AGBS">Agri-Business</option>
+          <option value="BUEC">Business Economics</option>
+          <option value="CE">Civil Engineering</option>
+          <option value="CMPT">Computer Science</option>
+          <option value="ECON">Economics</option>
+          <option value="FDSC">Food Science</option>
+          <option value="FIN">Finance</option>
+          <option value="STAT">Statistics</option>
+          <option value="Undeclared">Undeclared</option>
+        </select>
+      </div>
+    </div>
 
-
-  <div class="content-wide">
-    <!-- Select Options for Semester -->
-    <label for="selectSemester">Select a semester:</label>
-    <select id="selectSemester">
-      <option value="All">All</option>
-      <option value="Fall 2022">Fall 2022</option>
-      <option value="Winter 2023">Winter 2023</option>
-      <option value="Fall 2023">Fall 2023</option>
-      <option value="Winter 2024">Winter 2024</option>
-      <option value="Fall 2024">Fall 2024</option>
-    </select>
-
-    <!-- Select Options for Major -->
-    <label for="selectMajor">Select a major:</label>
-    <select id="selectMajor">
-      <option value="All">All</option>
-      <option value="ACC">Accounting</option>
-      <option value="AGEC">Agriculture Economics</option>
-      <option value="AGBS">Agri-Business</option>
-      <option value="BUEC">Business Economics</option>
-      <option value="CE">Civil Engineering</option>
-      <option value="CMPT">Computer Science</option>
-      <option value="ECON">Economics</option>
-      <option value="FDSC">Food Science</option>
-      <option value="FIN">Finance</option>
-      <option value="STAT">Statistics</option>
-      <option value="Undeclared">Undeclared</option>
-    </select>
-
-    <hr>
-
-    <canvas id="histogramChart" width="700" height="394"></canvas>
+    <div class="hist-chart-wrap">
+      <canvas id="histogramChart"></canvas>
+    </div>
   </div>
 
-
-  <!-- scripts -->
   <script type="text/javascript" src="HistoricalGrades.js"></script>
 
 </body>
+</html>

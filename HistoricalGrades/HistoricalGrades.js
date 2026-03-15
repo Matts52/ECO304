@@ -53,8 +53,8 @@ async function visualizeGrades() {
       datasets: [{
         label: 'Grade Distribution',
         data: bucketCounts,
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-        borderColor: 'rgba(75, 192, 192, 1)',
+        backgroundColor: 'rgba(39, 174, 96, 0.2)',
+        borderColor: 'rgba(26, 74, 40, 0.8)',
         borderWidth: 1
       }]
     },
