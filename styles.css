@@ -96,8 +96,14 @@ body.landing {
 }
 
 .feature-icon {
-  font-size: 28px;
-  line-height: 1;
+  display: flex;
+  align-items: center;
+  color: #27ae60;
+}
+
+.feature-icon svg {
+  width: 28px;
+  height: 28px;
 }
 
 .feature-card h2 {
@@ -127,12 +133,34 @@ canvas {
 }
 
 h1 {
-  text-align: center;
-  text-transform: uppercase;
-  color: #318024;
-  text-decoration-line: underline;
-  text-decoration-style: dotted;
-  text-shadow: 0.5px 0.5px;
+  font-family: Inter, -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.page-header {
+  background: #1a4a28;
+  padding: 28px 32px;
+  margin: 24px auto;
+  max-width: 740px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.page-header h1 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 4px;
+}
+
+.page-header p {
+  font-family: Inter, -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  color: rgba(255,255,255,0.72);
+  margin: 0;
 }
 
 h2 {
